@@ -42,7 +42,7 @@ class BinToDecController extends InGameController {
 
   @override
   void nextGame() {
-    if (getCurrentRounds() >= getMaxRounds()) {
+    if (getCurrentRounds() + 1 >= getMaxRounds()) {
       endGame();
       return;
     }
