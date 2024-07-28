@@ -6,6 +6,7 @@ enum GameSound {correct, incorrect}
 
 class GameSoundService extends GetxService {
   final Soundpool _pool = Soundpool(streamType: StreamType.notification);
+  int? _streamId;
   Map<GameSound, int> soundIdMap = {};
 
   @override
@@ -39,7 +40,11 @@ class GameSoundService extends GetxService {
     });
   }
 
-  Future<int> _playSound(int soundId) {
-    return _pool.play(soundId);
+  Future<int> _playSound(int soundId) async {
+    if (_streamId != null) await _pool.stop(_streamId!);
+    int id = await _pool.play(soundId);
+    _streamId = id;
+
+    return id;
   }
 }
