@@ -1,11 +1,10 @@
 import 'package:binary_quiz/controller/in_game_controller.dart';
+import 'package:binary_quiz/game/game_bin_to_dec.dart';
 import 'package:binary_quiz/game_settings.dart';
 import 'package:binary_quiz/page/in_game_page.dart';
 import 'package:binary_quiz/tool/my_tool.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
-import 'game/bin_to_dec_controller.dart';
 
 class HomeController extends GetxController {
   final TextEditingController maxRoundsEditingController =
@@ -18,11 +17,11 @@ class HomeController extends GetxController {
       return;
     }
 
-    InGameController gameController = BinToDecController();
+    InGameController gameController = InGameController(GameBinToDec(10));
     getGameSettings().maxRounds.value = maxRounds;
 
     Get.to(() => GetBuilder(
-        builder: (controller) => InGamePage(controller: controller),
+        builder: (controller) => InGamePage(),
         init: gameController));
   }
 

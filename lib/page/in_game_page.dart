@@ -12,13 +12,15 @@ import 'package:get/get.dart';
 import '../app_colors.dart';
 import '../widget/CustomKeypad.dart';
 
-class InGamePage extends StatelessWidget {
-  final InGameController controller;
+class InGamePage extends GetView<InGameController> {
   final Color _textFieldDefaultColor = AppColors.grey;
   final Rx<Color> _textFieldColor = AppColors.grey.obs;
   Timer? _textFieldTimer;
 
-  InGamePage({super.key, required this.controller});
+  InGamePage({super.key}) {
+    controller.setOnPassListener(() => _onPass());
+    controller.setOnFailListener(() => _onFail());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class InGamePage extends StatelessWidget {
                           fontSize: 22.sp,
                           color: AppColors.text),
                       children: [
-                        TextSpan(text: controller.getCurrentBinary()),
+                        TextSpan(text: controller.getQuestion()),
                         TextSpan(
                             text: "(2) ",
                             style: TextStyle(
@@ -101,8 +103,8 @@ class InGamePage extends StatelessWidget {
                         onEditingComplete: () {},
                         onSubmitted: (value) => checkAnswer(),
                         inputFormatters: [
-                          if (controller.textInputFormatter != null)
-                            controller.textInputFormatter!,
+                          if (controller.game.textInputFormatter != null)
+                            controller.game.textInputFormatter!,
                         ]),
                   )),
             ))
@@ -127,17 +129,18 @@ class InGamePage extends StatelessWidget {
     );
   }
 
+
+  void _onPass() {
+    _setColor(const Color(0xFFC9FFBA));
+    controller.nextGame();
+  }
+
+  void _onFail() {
+    _setColor(const Color(0xFFFFB5B5));
+  }
+
   void checkAnswer() {
-    bool? ret = controller.check();
-    if (ret == null) {
-      _setColor(const Color(0xFFFFB5B5));
-    } else if (ret) {
-      _setColor(const Color(0xFFC9FFBA));
-      controller.onPass();
-    } else {
-      _setColor(const Color(0xFFFFB5B5));
-      controller.onNonPass();
-    }
+    controller.check(true);
   }
 
   void _setColor(Color color) {

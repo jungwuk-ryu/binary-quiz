@@ -7,4 +7,12 @@ class GameSettings {
   RxDouble maxValue = RxDouble(10);
   RxInt maxRounds = RxInt(20);
   RxBool autoSubmit = RxBool(true);
+
+  int getMaxRounds() {
+    return maxRounds.value;
+  }
+
+  bool isAutoSubmitEnabled() {
+    return autoSubmit.value;
+  }
 }
