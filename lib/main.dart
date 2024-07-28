@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (_, child) {
           return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(colorSchemeSeed: AppColors.primary),
             initialBinding: HomeBindings(),
             home: Home(),
