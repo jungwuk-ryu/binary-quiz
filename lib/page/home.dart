@@ -9,10 +9,7 @@ import '../widget/border_container.dart';
 import '../widget/custom_button.dart';
 
 class Home extends GetView<HomeController> {
-  final RxBool msb = RxBool(false);
-  final RxBool playSound = RxBool(true);
-
-  Home({super.key});
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +56,6 @@ class Home extends GetView<HomeController> {
                             title: "자동 제출",
                             body: "정답을 입력할 경우 자동으로 다음으로 넘어갑니다.",
                             checkBox: controller.getGameSettings().autoSubmit),
-                        BorderContainer(
-                            title: "MSB 부호",
-                            body:
-                                "MSB(최상위 비트)를 부호 비트로 지정합니다. MSB가 1이면 음수를 의미합니다.",
-                            checkBox: msb),
                         BorderContainer(
                             title: "소리 재생",
                             body: "퀴즈 정답 여부에 따른 효과음을 재생합니다",
