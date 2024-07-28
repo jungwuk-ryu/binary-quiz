@@ -101,14 +101,19 @@ class InGameController extends GetxController {
     return result;
   }
 
+  Future<void> _playSound(GameSound sound) async {
+    if (_gameSettings.soundEnabled.isFalse) return;
+    await _soundService.playGameSound(sound);
+  }
+
   void makeOnPassEvent(bool async) {
-    _soundService.playGameSound(GameSound.correct);
     _makeEvent(async, _onPass);
+    _playSound(GameSound.correct);
   }
 
   void makeOnFailEvent(bool async) {
-    _soundService.playGameSound(GameSound.incorrect);
     _makeEvent(async, _onFail);
+    _playSound(GameSound.incorrect);
   }
 
   void _makeEvent(bool async, Function? func) {
