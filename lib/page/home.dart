@@ -78,7 +78,7 @@ class Home extends GetView<HomeController> {
   Widget _titleWidget() {
     return Text(
       "Binary Quiz",
-      style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+      style: TextStyle(fontSize: 18.spMin, fontWeight: FontWeight.bold),
     );
   }
 }

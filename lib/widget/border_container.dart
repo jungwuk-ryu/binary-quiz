@@ -105,12 +105,12 @@ class BorderContainer extends StatelessWidget {
         style: TextStyle(
             fontWeight: FontWeight.bold,
             color: AppColors.text,
-            fontSize: (fontRawSize + 1).sp));
+            fontSize: (fontRawSize + 1).spMin));
   }
 
   Widget _getBodyTextWidget() {
     return Text(body,
         style:
-            TextStyle(color: AppColors.textBlueGrey, fontSize: fontRawSize.sp));
+            TextStyle(color: AppColors.textBlueGrey, fontSize: fontRawSize.spMin));
   }
 }

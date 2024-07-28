@@ -42,7 +42,7 @@ class InGamePage extends GetView<InGameController> {
           Text("퀴즈",
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 22.sp,
+                  fontSize: 22.spMin,
                   color: AppColors.text)),
           Expanded(child: SizedBox()),
           ExitButton()
@@ -59,7 +59,7 @@ class InGamePage extends GetView<InGameController> {
                     text: TextSpan(
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 22.sp,
+                          fontSize: 22.spMin,
                           color: AppColors.text),
                       children: [
                         TextSpan(text: controller.getQuestion()),
@@ -68,7 +68,7 @@ class InGamePage extends GetView<InGameController> {
                             style: TextStyle(
                                 color: AppColors.textBlueGrey,
                                 fontWeight: FontWeight.normal,
-                                fontSize: 13.sp)),
+                                fontSize: 13.spMin)),
                         const TextSpan(text: "= ")
                       ],
                     )),
@@ -94,7 +94,7 @@ class InGamePage extends GetView<InGameController> {
                             contentPadding: EdgeInsets.zero,
                             hintText: "정답 입력"),
                         style: TextStyle(
-                            fontSize: 20.sp, fontWeight: FontWeight.bold),
+                            fontSize: 20.spMin, fontWeight: FontWeight.bold),
                         autofocus: !(Platform.isAndroid || Platform.isIOS),
                         onTapOutside: (event) =>
                             FocusScope.of(Get.context!).unfocus(),

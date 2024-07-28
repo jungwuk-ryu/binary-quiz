@@ -133,7 +133,7 @@ class _ButtonState extends State<_Button> {
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: AppColors.textBlueGrey,
-                  fontSize: 20.sp),
+                  fontSize: 20.spMin),
             ),
           ),
         ),

@@ -22,7 +22,7 @@ class FinishPage extends StatelessWidget {
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text("결과",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 25.sp)),
+                          fontWeight: FontWeight.bold, fontSize: 25.spMin)),
                 ]),
                 BorderContainer(title: "총 ${containers.length} 문제를 풀었어요"),
                 Expanded(
