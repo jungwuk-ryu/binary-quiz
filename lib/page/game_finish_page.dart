@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:smooth_scroll_multiplatform/smooth_scroll_multiplatform.dart';
 
 import '../widget/border_container.dart';
 import '../widget/custom_button.dart';
@@ -26,10 +27,13 @@ class FinishPage extends StatelessWidget {
                 ]),
                 BorderContainer(title: "총 ${containers.length} 문제를 풀었어요"),
                 Expanded(
-                    child: ListView.builder(
+                    child: DynMouseScroll(
+                      builder: (context, controller, physics) => ListView.builder(
+                      physics: physics,
+                      controller: controller,
                         itemBuilder: (context, index) =>
-                            containers[index],
-                        itemCount: containers.length)),
+                        containers[index],
+                        itemCount: containers.length),)),
                 SizedBox(height: 5.h),
                 CustomButton(
                     text: "나가기",
