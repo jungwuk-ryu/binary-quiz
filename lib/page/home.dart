@@ -59,7 +59,7 @@ class Home extends GetView<HomeController> {
                         BorderContainer(
                             title: "소리 재생",
                             body: "퀴즈 정답 여부에 따른 효과음을 재생합니다",
-                            checkBox: playSound),
+                            checkBox: controller.getGameSettings().soundEnabled),
                       ],
                     ),
                   ),

@@ -1,5 +1,6 @@
 import 'package:binary_quiz/game/game.dart';
 import 'package:binary_quiz/game_settings.dart';
+import 'package:binary_quiz/service/game_sound_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 import '../widget/CustomKeypad.dart';
 
 class InGameController extends GetxController {
+  final GameSoundService _soundService = Get.find<GameSoundService>();
   Function()? _onPass;
   Function()? _onFail;
 
@@ -100,10 +102,12 @@ class InGameController extends GetxController {
   }
 
   void makeOnPassEvent(bool async) {
+    _soundService.playGameSound(GameSound.correct);
     _makeEvent(async, _onPass);
   }
 
   void makeOnFailEvent(bool async) {
+    _soundService.playGameSound(GameSound.incorrect);
     _makeEvent(async, _onFail);
   }
 

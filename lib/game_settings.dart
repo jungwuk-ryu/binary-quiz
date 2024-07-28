@@ -7,6 +7,7 @@ class GameSettings {
   RxDouble maxValue = RxDouble(10);
   RxInt maxRounds = RxInt(20);
   RxBool autoSubmit = RxBool(true);
+  RxBool soundEnabled = RxBool(true);
 
   int getMaxRounds() {
     return maxRounds.value;
