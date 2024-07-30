@@ -82,6 +82,10 @@ class _SelectableBorderContainer extends GetView<HomeController> {
         controller.selectedGame(game);
       }
     });
+
+    controller.selectedGame.listen((p0) {
+      if (p0 != this) isSelected.value = false;
+    });
   }
 
   @override
