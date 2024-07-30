@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../game/game.dart';
-import '../../../game/games/game_bin_to_dec.dart';
 import '../../../tools/my_tool.dart';
 import '../../../ui/themes/app_colors.dart';
 import '../controllers/home_controller.dart';
@@ -26,24 +25,16 @@ class MainPage extends GetView<HomeController> {
             children: [
               const TitleText("Binary Quiz"),
               SizedBox(height: 12.h),
-              Expanded(
-                  child: CustomScrollView(
-                    slivers: [
-                      SliverList(
-                          delegate: SliverChildListDelegate([
-                            const BorderContainer(
-                                title: "📖 앱 설명",
-                                body:
-                                "Binary Quiz는 이진수 계산 능력을 향상시킬 수 있는 앱입니다.\n반복 연습을 통해 당신의 계산 속도를 향상시켜보세요!"),
-                            SizedBox(height: 20.h),
-                            const BorderContainer(
-                                title: "🕹️ 퀴즈",
-                                body: "즐기고 싶은 퀴즈를 선택하세요",
-                                backgroundColor: AppColors.grey),
-                            _SelectableBorderContainer(GameBinToDec(0)),
-                          ])),
-                    ],
-                  )),
+              const BorderContainer(
+                  title: "📖 앱 설명",
+                  body:
+                  "Binary Quiz는 이진수 계산 능력을 향상시킬 수 있는 앱입니다.\n반복 연습을 통해 당신의 계산 속도를 향상시켜보세요!"),
+              SizedBox(height: 20.h),
+            const BorderContainer(
+                title: "🕹️ 퀴즈",
+                body: "즐기고 싶은 퀴즈를 선택하세요",
+                backgroundColor: AppColors.grey),
+              Expanded(child: _GameListView(controller.getAvailableGames())),
               SizedBox(height: 12.h),
               CustomButton(text: "선택했어요", onClick: _onButtonClick),
               SizedBox(height: 12.h),
@@ -62,6 +53,21 @@ class MainPage extends GetView<HomeController> {
 
     Get.toNamed(Routes.LOBBY);
   }
+}
+
+class _GameListView extends StatelessWidget {
+  final List<Game> gameList;
+
+  const _GameListView(this.gameList, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: gameList.length,
+        itemBuilder: (context, index) => _SelectableBorderContainer(gameList[index])
+    );
+  }
+
 }
 
 class _SelectableBorderContainer extends GetView<HomeController> {
