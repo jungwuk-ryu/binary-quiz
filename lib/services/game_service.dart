@@ -1,4 +1,5 @@
 import 'package:binary_quiz/game/games/game_bin_to_dec.dart';
+import 'package:binary_quiz/game/games/game_dec_to_bin.dart';
 import 'package:get/get.dart';
 
 import '../game/game.dart';
@@ -13,6 +14,7 @@ class GameService extends GetxService {
   }
 
   void _intiGames() {
-    games.add(GameBinToDec(20));
+    games.add(GameBinToDec(10));
+    games.add(GameDecToBin(10));
   }
 }

@@ -41,7 +41,7 @@ class GameSoundService extends GetxService {
   }
 
   Future<int> _playSound(int soundId) async {
-    if (_streamId != null) await _pool.stop(_streamId!);
+    if (_streamId != null && _streamId! > 0) await _pool.stop(_streamId!);
     int id = await _pool.play(soundId);
     _streamId = id;
 

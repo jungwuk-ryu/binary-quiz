@@ -84,14 +84,8 @@ class InGameController extends GetxController {
   }
 
   bool? check(bool makeEvent) {
-    int? input = int.tryParse(teController.text);
     bool result;
-
-    if (input == null) {
-      result = false;
-    } else {
-      result = game.isAnswer(input);
-    }
+    result = game.isAnswer(teController.text) ?? false;
 
     if (makeEvent) {
       if (result) {

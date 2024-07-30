@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:binary_quiz/modules/finish/views/game_finish_page.dart';
@@ -10,33 +9,33 @@ import '../../tools/bin_tool.dart';
 import '../../ui/widgets/border_container.dart';
 import '../game.dart';
 
-class GameBinToDec extends Game<String, int> {
+class GameDecToBin extends Game<int, String> {
   int max;
 
-  GameBinToDec(this.max) {
+  GameDecToBin(this.max) {
     textInputFormatter =
         FilteringTextInputFormatter.allow(RegExp(r'^[+-]?\d*\.?\d*'));
   }
 
   @override
   GameRound getNewRound(int roundNo) {
-    int answer = _generateAnswer();
-    String question = BinTool.int2bin(answer);
+    int question = _generateQuestion();
+    String answer = BinTool.int2bin(question);
 
-    GameRoundBinToDec round = GameRoundBinToDec(roundNo: roundNo, question: question, answer: answer);
+    GameRoundDecToBin round = GameRoundDecToBin(roundNo: roundNo, question: question, answer: answer);
     return round;
   }
 
   @override
   void endGame() {
     super.endGame();
-    Map<int, GameRoundContainerBinToDec> containers = {};
+    Map<int, GameRoundContainerDecToBin> containers = {};
 
     for (GameRound round in rounds) {
-      GameRoundContainerBinToDec? container = containers[round.getAnswer()];
+      GameRoundContainerDecToBin? container = containers[round.getQuestion()];
 
       if (container == null) {
-        container = GameRoundContainerBinToDec(
+        container = GameRoundContainerDecToBin(
             question: round.getQuestion(),
             answer: round.getAnswer(),
             totalTimeInSec: round.getEstimatedTime().inSeconds,
@@ -46,50 +45,55 @@ class GameBinToDec extends Game<String, int> {
         container.totalTimeInSec += round.getEstimatedTime().inSeconds;
       }
 
-      containers[round.getAnswer()] = container;
+      containers[round.getQuestion()] = container;
     }
 
-    List<GameRoundContainerBinToDec> values = List.from(containers.values);
+    List<GameRoundContainerDecToBin> values = List.from(containers.values);
     Get.off(() => FinishPage(
       game: this,
       containers: List.generate(values.length, (index) => values[index]),
     ));
   }
 
-  int _generateAnswer() {
+  int _generateQuestion() {
     return Random().nextInt(max);
   }
 
   @override
   String getDescription() {
-    return "이진수를 십진수로 변환하는 퀴즈입니다.";
+    return "십진수를 이진수로 변환하는 퀴즈입니다.";
   }
 
   @override
   String getName() {
-    return "Binary To Decimal";
+    return "Decimal To Binary";
+  }
+
+  @override
+  bool? isAnswer(v) {
+    return currentRound.value?.isAnswer(v);
   }
 }
 
-class GameRoundBinToDec extends GameRound<String, int> {
-  GameRoundBinToDec({required super.roundNo, required super.question, required super.answer});
+class GameRoundDecToBin extends GameRound<int, String> {
+  GameRoundDecToBin({required super.roundNo, required super.question, required super.answer});
 
   @override
   bool isAnswer(value) {
     if (value == null) return false;
+    int? num = BinTool.bin2int(value);
 
-    int? num = int.tryParse(value);
-    return num == getAnswer();
+    return num == getQuestion();
   }
 }
 
-class GameRoundContainerBinToDec extends GameRoundContainer {
-  String question;
-  int answer;
+class GameRoundContainerDecToBin extends GameRoundContainer {
+  int question;
+  String answer;
   int totalTimeInSec;
   int tryCount;
 
-  GameRoundContainerBinToDec(
+  GameRoundContainerDecToBin(
       {super.key, required this.question,
       required this.answer,
       required this.totalTimeInSec,
@@ -98,7 +102,7 @@ class GameRoundContainerBinToDec extends GameRoundContainer {
   @override
   Widget build(BuildContext context) {
     return BorderContainer(
-      title: question,
+      title: "$question",
       body: "답: $answer\n"
           "평균 $totalTimeInSec초 소요\n"
           "$tryCount번 풀었음",

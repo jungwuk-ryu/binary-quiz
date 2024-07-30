@@ -5,10 +5,16 @@ import 'package:get/get.dart';
 abstract class Game<Q, A> {
   TextInputFormatter? textInputFormatter;
   final RxInt _currentRoundNo = RxInt(-1);
-  final Rxn<GameRound> _currentRound = Rxn();
+  final Rxn<GameRound> currentRound = Rxn();
   List<GameRound> rounds = [];
   DateTime _startTime = DateTime(0);
   DateTime _endTime = DateTime(0);
+
+  void reset() {
+    _currentRoundNo.value = -1;
+    currentRound.value = null;
+    rounds.clear();
+  }
 
   @mustCallSuper
   void startGame() {
@@ -16,6 +22,7 @@ abstract class Game<Q, A> {
       throw "textInputFormatter가 null입니다.";
     }
 
+    reset();
     _setStartTime();
     nextRound();
   }
@@ -54,8 +61,8 @@ abstract class Game<Q, A> {
   }
 
   void _endRound() {
-    if (_currentRound.value == null) return;
-    _currentRound.value!.setEndTime();
+    if (currentRound.value == null) return;
+    currentRound.value!.setEndTime();
   }
 
   void _addRound(GameRound round) {
@@ -63,11 +70,11 @@ abstract class Game<Q, A> {
   }
 
   void _setCurrentRound(GameRound round) {
-    _currentRound.value = round;
+    currentRound.value = round;
   }
 
-  bool isAnswer(A v) {
-    return _currentRound.value!.isAnswer(v);
+  bool? isAnswer(dynamic v) {
+    return currentRound.value?.isAnswer(v);
   }
 
   Duration getEstimatedTime() {
@@ -83,7 +90,7 @@ abstract class Game<Q, A> {
   }
 
   dynamic getQuestion() {
-    return _currentRound.value!.getQuestion();
+    return currentRound.value!.getQuestion();
   }
 
   String getName();
@@ -93,32 +100,27 @@ abstract class Game<Q, A> {
 }
 
 abstract class GameRound<Q,A> {
-  late Q question;
-  late A answer;
-  int roundNo;
+  final Q question;
+  final A answer;
+  final int roundNo;
 
   DateTime _startTime = DateTime(0);
   DateTime _endTime = DateTime(0);
 
-  GameRound(this.roundNo, this.question, this.answer);
+  GameRound({required this.roundNo, required this.question, required this.answer});
 
-  A getAnswer();
-
-  Q getQuestion();
-
-  void setQuestion(Q value) {
-    this.question = value;
+  A getAnswer() {
+    return answer;
   }
 
-  bool isAnswer(A value) {
-    return getAnswer() == value;
+  Q getQuestion() {
+    return question;
   }
+  bool isAnswer(dynamic value);
 
   void setStartTime() {
     _startTime = DateTime.now();
   }
-
-  void setAnswer(A answer);
 
   void setEndTime() {
     _endTime = DateTime.now();

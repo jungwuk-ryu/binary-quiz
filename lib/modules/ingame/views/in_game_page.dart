@@ -62,7 +62,7 @@ class InGamePage extends GetView<InGameController> {
                           fontSize: 22.spMin,
                           color: AppColors.text),
                       children: [
-                        TextSpan(text: controller.getQuestion()),
+                        TextSpan(text: "${controller.getQuestion()}"),
                         TextSpan(
                             text: "(2) ",
                             style: TextStyle(
