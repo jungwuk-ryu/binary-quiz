@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 abstract class Game<Q, A> {
   TextInputFormatter? textInputFormatter;
-  RxInt _currentRoundNo = RxInt(-1);
-  Rxn<GameRound> _currentRound = Rxn();
+  final RxInt _currentRoundNo = RxInt(-1);
+  final Rxn<GameRound> _currentRound = Rxn();
   List<GameRound> rounds = [];
   DateTime _startTime = DateTime(0);
   DateTime _endTime = DateTime(0);

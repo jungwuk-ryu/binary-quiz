@@ -2,7 +2,6 @@ import 'package:binary_quiz/game/game.dart';
 import 'package:binary_quiz/game_settings.dart';
 import 'package:binary_quiz/service/game_sound_service.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../widget/custom_keypad.dart';
@@ -41,7 +40,7 @@ class InGameController extends GetxController {
     bool? result = check(false);
     if (result == true) {
       makeOnPassEvent(true);
-    };
+    }
   }
 
   void handleKeypadInput(String str) {
@@ -95,8 +94,11 @@ class InGameController extends GetxController {
     }
 
     if (makeEvent) {
-      if (result) makeOnPassEvent(false);
-      else makeOnFailEvent(false);
+      if (result) {
+        makeOnPassEvent(false);
+      } else {
+        makeOnFailEvent(false);
+      }
     }
 
     return result;

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(colorSchemeSeed: AppColors.primary),
             initialBinding: HomeBindings(),
-            home: Home(),
+            home: const Home(),
           );
         });
   }

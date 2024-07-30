@@ -6,7 +6,7 @@ class BinTool {
 
     while (num != 0) {
       str = "${num % 2}$str";
-      num = (num / 2).toInt();
+      num = num ~/ 2;
     }
 
     return str;

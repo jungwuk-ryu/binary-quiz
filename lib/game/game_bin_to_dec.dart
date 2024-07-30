@@ -75,8 +75,8 @@ class GameRoundBinToDec extends GameRound<String, int> {
   }
 
   @override
-  void setAnswer(int value) {
-    answer = value;
+  void setAnswer(int answer) {
+    this.answer = answer;
   }
 }
 

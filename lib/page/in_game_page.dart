@@ -44,8 +44,8 @@ class InGamePage extends GetView<InGameController> {
                   fontWeight: FontWeight.bold,
                   fontSize: 22.spMin,
                   color: AppColors.text)),
-          Expanded(child: SizedBox()),
-          ExitButton()
+          const Expanded(child: SizedBox()),
+          const ExitButton()
         ]),
         SizedBox(height: 20.h),
         _getProgressBar(),
@@ -174,7 +174,7 @@ class InGamePage extends GetView<InGameController> {
                 borderRadius: BorderRadius.circular(4.r),
                 color: AppColors.black,
               ),
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
             );
           }),
         )
