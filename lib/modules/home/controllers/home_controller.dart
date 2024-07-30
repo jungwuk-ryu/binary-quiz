@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
 
-import '../game/game.dart';
+import '../../../game/game.dart';
 
-class MainPageController extends GetxController {
+
+class HomeController extends GetxController {
   final Rxn<Game> selectedGame = Rxn<Game>();
 
   bool isSelected(Game game) {

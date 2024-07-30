@@ -1,14 +1,14 @@
-import 'package:binary_quiz/app_colors.dart';
-import 'package:binary_quiz/widget/exit_button.dart';
+import 'package:binary_quiz/ui/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../controller/game_lobby_controller.dart';
-import '../widget/border_container.dart';
-import '../widget/custom_button.dart';
-import '../widget/title_text.dart';
+import '../../../ui/widgets/exit_button.dart';
+import '../controllers/game_lobby_controller.dart';
+import '../../../ui/widgets/border_container.dart';
+import '../../../ui/widgets/custom_button.dart';
+import '../../../ui/widgets/title_text.dart';
 
 class GameLobbyPage extends GetView<GameLobbyController> {
   const GameLobbyPage({super.key});

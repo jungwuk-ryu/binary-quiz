@@ -2,15 +2,15 @@ import 'dart:async';
 import 'dart:io' show Platform;
 import 'dart:math';
 
-import 'package:binary_quiz/controller/in_game_controller.dart';
-import 'package:binary_quiz/widget/custom_button.dart';
-import 'package:binary_quiz/widget/exit_button.dart';
+import 'package:binary_quiz/modules/ingame/controllers/in_game_controller.dart';
+import 'package:binary_quiz/ui/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../app_colors.dart';
-import '../widget/custom_keypad.dart';
+import '../../../ui/themes/app_colors.dart';
+import '../../../ui/widgets/custom_keypad.dart';
+import '../../../ui/widgets/exit_button.dart';
 
 class InGamePage extends GetView<InGameController> {
   final Color _textFieldDefaultColor = AppColors.grey;

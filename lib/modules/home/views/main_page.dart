@@ -1,18 +1,18 @@
-import 'package:binary_quiz/controller/main_page_controller.dart';
-import 'package:binary_quiz/game/game.dart';
-import 'package:binary_quiz/game/game_bin_to_dec.dart';
-import 'package:binary_quiz/tool/my_tool.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../app_colors.dart';
-import '../routes/app_pages.dart';
-import '../widget/border_container.dart';
-import '../widget/custom_button.dart';
-import '../widget/title_text.dart';
+import '../../../game/game.dart';
+import '../../../game/games/game_bin_to_dec.dart';
+import '../../../tools/my_tool.dart';
+import '../../../ui/themes/app_colors.dart';
+import '../controllers/home_controller.dart';
+import '../../../routes/app_pages.dart';
+import '../../../ui/widgets/border_container.dart';
+import '../../../ui/widgets/custom_button.dart';
+import '../../../ui/widgets/title_text.dart';
 
-class MainPage extends GetView<MainPageController> {
+class MainPage extends GetView<HomeController> {
   const MainPage({super.key});
 
   @override
@@ -64,7 +64,7 @@ class MainPage extends GetView<MainPageController> {
   }
 }
 
-class _SelectableBorderContainer extends GetView<MainPageController> {
+class _SelectableBorderContainer extends GetView<HomeController> {
   final Game game;
   final RxBool isSelected = RxBool(false);
 

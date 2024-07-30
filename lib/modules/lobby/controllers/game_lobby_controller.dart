@@ -1,20 +1,20 @@
-import 'package:binary_quiz/controller/in_game_controller.dart';
-import 'package:binary_quiz/controller/main_page_controller.dart';
-import 'package:binary_quiz/game/game_bin_to_dec.dart';
-import 'package:binary_quiz/game_settings.dart';
-import 'package:binary_quiz/page/in_game_page.dart';
-import 'package:binary_quiz/tool/my_tool.dart';
+import 'package:binary_quiz/modules/ingame/controllers/in_game_controller.dart';
+import 'package:binary_quiz/game/game_settings.dart';
+import 'package:binary_quiz/modules/ingame/views/in_game_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../game/game.dart';
+import '../../../game/game.dart';
+import '../../../game/games/game_bin_to_dec.dart';
+import '../../../tools/my_tool.dart';
+import '../../home/controllers/home_controller.dart';
 
 class GameLobbyController extends GetxController {
   final TextEditingController maxRoundsEditingController =
       TextEditingController(text: "20");
 
   Game getGame() {
-    return Get.find<MainPageController>().selectedGame.value!;
+    return Get.find<HomeController>().selectedGame.value!;
   }
 
   void startGame() {

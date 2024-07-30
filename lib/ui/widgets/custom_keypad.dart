@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:binary_quiz/app_colors.dart';
+import 'package:binary_quiz/ui/themes/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -1,7 +1,7 @@
-import 'package:binary_quiz/binding/game_lobby_bindings.dart';
-import 'package:binary_quiz/binding/main_page_bindings.dart';
-import 'package:binary_quiz/page/game_lobby_page.dart';
-import 'package:binary_quiz/page/main_page.dart';
+import 'package:binary_quiz/modules/lobby/bindings/game_lobby_bindings.dart';
+import 'package:binary_quiz/modules/home/bindings/home_bindings.dart';
+import 'package:binary_quiz/modules/lobby/views/game_lobby_page.dart';
+import 'package:binary_quiz/modules/home/views/main_page.dart';
 import 'package:get/get.dart';
 
 part 'app_routes.dart';
@@ -15,7 +15,7 @@ class AppPages {
     GetPage(
       name: _Paths.MAIN,
       page: () => const MainPage(),
-      binding: MainPageBindings(),
+      binding: HomeBindings(),
     ),
     GetPage(
         name: _Paths.LOBBY,

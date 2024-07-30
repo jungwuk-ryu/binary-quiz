@@ -1,10 +1,10 @@
-import 'package:binary_quiz/game/game.dart';
-import 'package:binary_quiz/game_settings.dart';
-import 'package:binary_quiz/service/game_sound_service.dart';
+import 'package:binary_quiz/game/game_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../widget/custom_keypad.dart';
+import '../../../game/game.dart';
+import '../../../services/game_sound_service.dart';
+import '../../../ui/widgets/custom_keypad.dart';
 
 
 class InGameController extends GetxController {

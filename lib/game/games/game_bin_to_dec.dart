@@ -1,13 +1,13 @@
 import 'dart:math';
 
-import 'package:binary_quiz/game/game.dart';
-import 'package:binary_quiz/page/game_finish_page.dart';
+import 'package:binary_quiz/modules/finish/views/game_finish_page.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../tool/bin_tool.dart';
-import '../widget/border_container.dart';
+import '../../tools/bin_tool.dart';
+import '../../ui/widgets/border_container.dart';
+import '../game.dart';
 
 class GameBinToDec extends Game<String, int> {
   int max;

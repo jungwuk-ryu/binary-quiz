@@ -1,12 +1,12 @@
-import 'package:binary_quiz/game/game.dart';
-import 'package:binary_quiz/widget/title_text.dart';
+import 'package:binary_quiz/ui/widgets/title_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:smooth_scroll_multiplatform/smooth_scroll_multiplatform.dart';
 
-import '../widget/border_container.dart';
-import '../widget/custom_button.dart';
+import '../../../game/game.dart';
+import '../../../ui/widgets/border_container.dart';
+import '../../../ui/widgets/custom_button.dart';
 
 class FinishPage extends StatelessWidget {
   final Game game;

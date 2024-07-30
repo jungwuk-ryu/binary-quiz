@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../app_colors.dart';
+import '../themes/app_colors.dart';
 
 class BorderContainer extends StatelessWidget {
   final String title;
