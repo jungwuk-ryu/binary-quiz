@@ -87,7 +87,7 @@ class GameRoundContainerBinToDec extends GameRoundContainer {
   int tryCount;
 
   GameRoundContainerBinToDec(
-      {required this.question,
+      {super.key, required this.question,
       required this.answer,
       required this.totalTimeInSec,
       required this.tryCount});

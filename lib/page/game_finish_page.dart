@@ -52,4 +52,6 @@ class FinishPage extends StatelessWidget {
   }
 }
 
-abstract class GameRoundContainer extends StatelessWidget {}
+abstract class GameRoundContainer extends StatelessWidget {
+  const GameRoundContainer({super.key});
+}
