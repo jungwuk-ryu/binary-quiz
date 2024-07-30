@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../game/game.dart';
-import '../../../game/games/game_bin_to_dec.dart';
 import '../../../tools/my_tool.dart';
 import '../../home/controllers/home_controller.dart';
 
@@ -24,7 +23,7 @@ class GameLobbyController extends GetxController {
       return;
     }
 
-    InGameController gameController = InGameController(GameBinToDec(10));
+    InGameController gameController = InGameController(getGame());
     getGameSettings().maxRounds.value = maxRounds;
 
     Get.to(() => GetBuilder(
