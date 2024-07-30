@@ -50,6 +50,7 @@ class GameBinToDec extends Game<String, int> {
 
     List<GameRoundContainerBinToDec> values = List.from(containers.values);
     Get.off(() => FinishPage(
+      game: this,
       containers: List.generate(values.length, (index) => values[index]),
     ));
   }

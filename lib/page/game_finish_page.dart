@@ -1,3 +1,4 @@
+import 'package:binary_quiz/game/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,9 +8,10 @@ import '../widget/border_container.dart';
 import '../widget/custom_button.dart';
 
 class FinishPage extends StatelessWidget {
+  final Game game;
   final List<GameRoundContainer> containers;
 
-  const FinishPage({super.key, required this.containers});
+  const FinishPage({super.key, required this.game, required this.containers});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,10 @@ class FinishPage extends StatelessWidget {
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 25.spMin)),
                 ]),
-                BorderContainer(title: "총 ${containers.length} 문제를 풀었어요"),
-                Expanded(
+                BorderContainer(
+                title: "총 ${containers.length} 문제를 풀었어요",
+                body: "${game.getEstimatedTime().inSeconds}초 소요"),
+            Expanded(
                     child: DynMouseScroll(
                       builder: (context, controller, physics) => ListView.builder(
                       physics: physics,
