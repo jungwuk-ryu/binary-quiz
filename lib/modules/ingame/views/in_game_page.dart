@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:binary_quiz/modules/ingame/controllers/in_game_controller.dart';
 import 'package:binary_quiz/ui/widgets/custom_button.dart';
+import 'package:binary_quiz/ui/widgets/title_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -38,14 +39,10 @@ class InGamePage extends GetView<InGameController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(children: [
-          Text("퀴즈",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22.spMin,
-                  color: AppColors.text)),
-          const Expanded(child: SizedBox()),
-          const ExitButton()
+        const Row(children: [
+          TitleText("퀴즈"),
+          Expanded(child: SizedBox()),
+          ExitButton()
         ]),
         SizedBox(height: 20.h),
         _getProgressBar(),
