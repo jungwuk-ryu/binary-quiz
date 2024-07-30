@@ -58,6 +58,16 @@ class GameBinToDec extends Game<String, int> {
   int _generateAnswer() {
     return Random().nextInt(max);
   }
+
+  @override
+  String getDescription() {
+    return "이진수를 십진수로 변환하는 퀴즈입니다.";
+  }
+
+  @override
+  String getName() {
+    return "Binary To Decimal";
+  }
 }
 
 class GameRoundBinToDec extends GameRound<String, int> {

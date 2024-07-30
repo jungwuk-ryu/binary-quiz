@@ -1,36 +1,44 @@
 import 'package:binary_quiz/app_colors.dart';
-import 'package:binary_quiz/controller/home_controller.dart';
+import 'package:binary_quiz/widget/exit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../controller/game_lobby_controller.dart';
 import '../widget/border_container.dart';
 import '../widget/custom_button.dart';
+import '../widget/title_text.dart';
 
-class Home extends GetView<HomeController> {
-  const Home({super.key});
+class GameLobbyPage extends GetView<GameLobbyController> {
+  const GameLobbyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _titleWidget(),
+              const Row(
+                children: [
+                  TitleText("Binary Quiz"),
+                  Expanded(child: SizedBox()),
+                  ExitButton(),
+                ],
+              ),
               SizedBox(height: 12.h),
               Expanded(
                   child: CustomScrollView(
                 slivers: [
                   SliverList(
                       delegate: SliverChildListDelegate([
-                    const BorderContainer(
-                        title: "📖 앱 설명",
+                    BorderContainer(
+                        title: "📖 ${controller.getGame().getName()}",
                         body:
-                            "Binary Quiz는 이진수를 10진수로 바꾸는 계산 능력을 향상시킬 수 있는 앱입니다.\n반복 연습을 통해 당신의 계산 속도를 향상시켜보세요!"),
+                            controller.getGame().getDescription()),
                     SizedBox(height: 20.h)
                   ])),
                   SliverFillRemaining(
@@ -72,13 +80,6 @@ class Home extends GetView<HomeController> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _titleWidget() {
-    return Text(
-      "Binary Quiz",
-      style: TextStyle(fontSize: 18.spMin, fontWeight: FontWeight.bold),
     );
   }
 }

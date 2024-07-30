@@ -5,7 +5,7 @@ import 'package:soundpool/soundpool.dart';
 enum GameSound {correct, incorrect}
 
 class GameSoundService extends GetxService {
-  final Soundpool _pool = Soundpool(streamType: StreamType.notification);
+  final Soundpool _pool = Soundpool.fromOptions(options: const SoundpoolOptions(streamType: StreamType.notification));
   int? _streamId;
   Map<GameSound, int> soundIdMap = {};
 

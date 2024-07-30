@@ -1,10 +1,9 @@
 import 'package:binary_quiz/app_colors.dart';
-import 'package:binary_quiz/binding/home_bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'page/home.dart';
+import 'routes/app_pages.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +12,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -24,8 +22,8 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(colorSchemeSeed: AppColors.primary),
-            initialBinding: HomeBindings(),
-            home: const Home(),
+            initialRoute: AppPages.INITIAL,
+            getPages: AppPages.routes,
           );
         });
   }

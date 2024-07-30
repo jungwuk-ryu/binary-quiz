@@ -1,4 +1,5 @@
 import 'package:binary_quiz/game/game.dart';
+import 'package:binary_quiz/widget/title_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -22,10 +23,8 @@ class FinishPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text("결과",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 25.spMin)),
+                const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  TitleText("결과"),
                 ]),
                 BorderContainer(
                 title: "총 ${containers.length} 문제를 풀었어요",

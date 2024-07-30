@@ -86,6 +86,10 @@ abstract class Game<Q, A> {
     return _currentRound.value!.getQuestion();
   }
 
+  String getName();
+
+  String getDescription();
+
 }
 
 abstract class GameRound<Q,A> {

@@ -1,4 +1,5 @@
 import 'package:binary_quiz/controller/in_game_controller.dart';
+import 'package:binary_quiz/controller/main_page_controller.dart';
 import 'package:binary_quiz/game/game_bin_to_dec.dart';
 import 'package:binary_quiz/game_settings.dart';
 import 'package:binary_quiz/page/in_game_page.dart';
@@ -6,9 +7,15 @@ import 'package:binary_quiz/tool/my_tool.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
+import '../game/game.dart';
+
+class GameLobbyController extends GetxController {
   final TextEditingController maxRoundsEditingController =
       TextEditingController(text: "20");
+
+  Game getGame() {
+    return Get.find<MainPageController>().selectedGame.value!;
+  }
 
   void startGame() {
     int? maxRounds = int.tryParse(maxRoundsEditingController.text.trim());
