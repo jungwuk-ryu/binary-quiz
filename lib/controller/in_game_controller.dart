@@ -5,7 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../widget/CustomKeypad.dart';
+import '../widget/custom_keypad.dart';
+
 
 class InGameController extends GetxController {
   final GameSoundService _soundService = Get.find<GameSoundService>();

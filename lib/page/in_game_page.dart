@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../app_colors.dart';
-import '../widget/CustomKeypad.dart';
+import '../widget/custom_keypad.dart';
 
 class InGamePage extends GetView<InGameController> {
   final Color _textFieldDefaultColor = AppColors.grey;
