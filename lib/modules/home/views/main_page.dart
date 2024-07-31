@@ -84,7 +84,7 @@ class _SelectableBorderContainer extends GetView<HomeController> {
     });
 
     controller.selectedGame.listen((p0) {
-      if (p0 != this) isSelected.value = false;
+      if (p0 != game) isSelected.value = false;
     });
   }
 
