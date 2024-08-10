@@ -2,6 +2,7 @@ import 'package:binary_quiz/game/game_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../ui/widgets/border_container.dart';
 
@@ -9,13 +10,17 @@ class MaxValueIntSetting extends GameSetting<int> {
   final TextEditingController controller = TextEditingController(text: "10");
   final RxInt maxValue = RxInt(10);
 
+  MaxValueIntSetting(super.game);
+
   @override
   void init() {
+    super.init();
+
     controller.addListener(() {
       int? value = int.tryParse(controller.text);
       if (value == null) return;
 
-      maxValue.value = value;
+      setValue(value);
     });
   }
 
@@ -31,7 +36,26 @@ class MaxValueIntSetting extends GameSetting<int> {
 
   @override
   void setValue(int value) {
+    super.setValue(value);
     maxValue.value = value;
+  }
+
+  @override
+  String getKey() {
+    return "max_value_int";
+  }
+
+  @override
+  Future<void> load() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? data = prefs.getString(getStorageKey());
+    if (data == null) return;
+
+    int? intData = int.tryParse(data);
+    if (intData == null) return;
+
+    setValue(intData);
+    controller.text = "$intData";
   }
 
 }

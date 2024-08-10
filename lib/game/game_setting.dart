@@ -1,16 +1,42 @@
 import 'package:binary_quiz/game/game.dart';
+import 'package:binary_quiz/modules/home/controllers/home_controller.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class GameSetting<V> {
-  void init();
+  final Game game;
+
+  GameSetting(this.game);
+
+  Game getCurrentGame() {
+    return game;
+  }
+
+  @mustCallSuper
+  void init() {
+    load();
+  }
 
   V getValue();
 
   Widget getWidget();
 
-  void setValue(V value);
+  @mustCallSuper
+  void setValue(V value) {
+    save();
+  }
 
-  void save(Game game) {
-    throw UnimplementedError();
+  String getKey();
+
+  String getStorageKey() {
+    return "${getCurrentGame().getKey()}::${getKey()}";
+  }
+
+  Future<void> load();
+
+  Future<void> save() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(getStorageKey(), "${getValue()}");
   }
 }

@@ -14,7 +14,7 @@ class GameLobbyController extends GetxController {
   }
 
   void startGame() {
-    int? maxRounds = getGame().getSetting(MaxRoundsSetting())?.getValue();
+    int? maxRounds = getGame().getSetting(MaxRoundsSetting)?.getValue();
     if (maxRounds == null || maxRounds < 1) {
       MyTool.snackbar(title: "올바르지 않은 라운드 수", body: "라운드 수는 최소 1 이상이어야합니다.");
       return;

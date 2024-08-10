@@ -12,10 +12,6 @@ abstract class Game<Q, A> {
   DateTime _startTime = DateTime(0);
   DateTime _endTime = DateTime(0);
 
-  Game() {
-    init();
-  }
-
   void init() {
     initGameSettings();
   }
@@ -26,9 +22,9 @@ abstract class Game<Q, A> {
     }
   }
 
-  GameSetting? getSetting(GameSetting setting) {
+  GameSetting? getSetting(Type settingType) {
     for (GameSetting sett in getAvailableSettings()) {
-      if (sett.runtimeType == setting.runtimeType) return sett;
+      if (sett.runtimeType == settingType) return sett;
     }
     return null;
   }
@@ -123,6 +119,8 @@ abstract class Game<Q, A> {
   List<GameSetting> getAvailableSettings();
 
   List<Widget> getSettingWidgets();
+
+  String getKey();
 
 }
 

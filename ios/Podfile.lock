@@ -1,20 +1,27 @@
 PODS:
   - Flutter (1.0.0)
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - soundpool (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - soundpool (from `.symlinks/plugins/soundpool/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   soundpool:
     :path: ".symlinks/plugins/soundpool/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
   soundpool: c7f4422ca206e77f8900ed3c4ee6a6ff5a0e38a9
 
 PODFILE CHECKSUM: 7be2f5f74864d463a8ad433546ed1de7e0f29aef

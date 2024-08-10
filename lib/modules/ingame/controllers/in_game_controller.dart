@@ -1,7 +1,6 @@
 import 'package:binary_quiz/game/settings/auto_submit_setting.dart';
 import 'package:binary_quiz/game/settings/game_sound_setting.dart';
 import 'package:binary_quiz/game/settings/max_rounds_setting.dart';
-import 'package:binary_quiz/game/settings/max_value_dec_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -33,11 +32,11 @@ class InGameController extends GetxController {
   }
 
   int getMaxRounds() {
-    return game.getSetting(MaxRoundsSetting())!.getValue();
+    return game.getSetting(MaxRoundsSetting)!.getValue();
   }
 
   void _textEditingListener() {
-    if (game.getSetting(AutoSubmitSetting())!.getValue() == false) return;
+    if (game.getSetting(AutoSubmitSetting)!.getValue() == false) return;
     bool? result = check(false);
     if (result == true) {
       makeOnPassEvent(true);
@@ -100,7 +99,7 @@ class InGameController extends GetxController {
   }
 
   Future<void> _playSound(GameSound sound) async {
-    if (game.getSetting(GameSoundSetting())!.getValue() == false) return;
+    if (game.getSetting(GameSoundSetting)!.getValue() == false) return;
     await _soundService.playGameSound(sound);
   }
 

@@ -12,19 +12,20 @@ import '../game_setting.dart';
 import '../settings/auto_submit_setting.dart';
 import '../settings/game_sound_setting.dart';
 import '../settings/max_rounds_setting.dart';
-import '../settings/max_value_dec_setting.dart';
+import '../settings/max_value_int_setting.dart';
 
 class GameDecToBin extends Game<int, String> {
-  final List<GameSetting> _availSettings = [
-    MaxRoundsSetting(),
-    MaxValueIntSetting(),
-    GameSoundSetting(),
-    AutoSubmitSetting()
-  ];
+  final List<GameSetting> _availSettings = [];
 
   GameDecToBin() {
     textInputFormatter =
         FilteringTextInputFormatter.allow(RegExp(r'^[+-]?\d*\.?\d*'));
+    _availSettings.addAll([
+      MaxRoundsSetting(this),
+      MaxValueIntSetting(this),
+      GameSoundSetting(this),
+      AutoSubmitSetting(this)
+    ]);
   }
 
   @override
@@ -66,7 +67,7 @@ class GameDecToBin extends Game<int, String> {
   }
 
   int _generateQuestion() {
-    return Random().nextInt(getSetting(MaxValueIntSetting())!.getValue() + 1);
+    return Random().nextInt(getSetting(MaxValueIntSetting)!.getValue() + 1);
   }
 
   @override
@@ -93,6 +94,11 @@ class GameDecToBin extends Game<int, String> {
   List<Widget> getSettingWidgets() {
     return List<Widget>.generate(
         _availSettings.length, (index) => _availSettings[index].getWidget());
+  }
+
+  @override
+  String getKey() {
+    return "DTB";
   }
 }
 

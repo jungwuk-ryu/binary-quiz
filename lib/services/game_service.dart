@@ -16,5 +16,9 @@ class GameService extends GetxService {
   void _intiGames() {
     games.add(GameBinToDec());
     games.add(GameDecToBin());
+
+    for (Game game in games) {
+      game.init();
+    }
   }
 }

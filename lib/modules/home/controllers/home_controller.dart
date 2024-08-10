@@ -32,4 +32,8 @@ class HomeController extends GetxController {
     return Get.find<GameService>().games;
   }
 
+  Game? getSelectedGame() {
+    return selectedGame.value;
+  }
+
 }

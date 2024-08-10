@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:binary_quiz/game/game_setting.dart';
@@ -13,19 +12,19 @@ import '../game.dart';
 import '../settings/auto_submit_setting.dart';
 import '../settings/game_sound_setting.dart';
 import '../settings/max_rounds_setting.dart';
-import '../settings/max_value_dec_setting.dart';
+import '../settings/max_value_int_setting.dart';
 
 class GameBinToDec extends Game<String, int> {
-  final List<GameSetting> _availSettings = [
-    MaxRoundsSetting(),
-    MaxValueIntSetting(),
-    GameSoundSetting(),
-    AutoSubmitSetting()
-  ];
+  final List<GameSetting> _availSettings = [];
 
   GameBinToDec() {
     textInputFormatter =
         FilteringTextInputFormatter.allow(RegExp(r'^[+-]?\d*\.?\d*'));
+    _availSettings.addAll([
+      MaxRoundsSetting(this),
+      MaxValueIntSetting(this),
+      GameSoundSetting(this),
+      AutoSubmitSetting(this)]);
   }
 
   @override
@@ -67,7 +66,7 @@ class GameBinToDec extends Game<String, int> {
   }
 
   int _generateAnswer() {
-    return Random().nextInt(getSetting(MaxValueIntSetting())!.getValue() + 1);
+    return Random().nextInt(getSetting(MaxValueIntSetting)!.getValue() + 1);
   }
 
   @override
@@ -89,6 +88,11 @@ class GameBinToDec extends Game<String, int> {
   List<Widget> getSettingWidgets() {
     return List<Widget>.generate(
         _availSettings.length, (index) => _availSettings[index].getWidget());
+  }
+
+  @override
+  String getKey() {
+    return "BTD";
   }
 }
 

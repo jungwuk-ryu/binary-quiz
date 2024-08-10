@@ -1,11 +1,22 @@
 import 'package:binary_quiz/game/game_setting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../ui/widgets/border_container.dart';
 
 class AutoSubmitSetting extends GameSetting<bool> {
   final RxBool autoSubmit = RxBool(true);
+
+  AutoSubmitSetting(super.game);
+
+  @override
+  void init() {
+    super.init();
+    autoSubmit.listen((p0) {
+      setValue(p0);
+    });
+  }
 
   @override
   bool getValue() {
@@ -18,12 +29,26 @@ class AutoSubmitSetting extends GameSetting<bool> {
   }
 
   @override
-  void init() {
+  void setValue(bool value) {
+    super.setValue(value);
+    autoSubmit.value = value;
   }
 
   @override
-  void setValue(bool value) {
-    autoSubmit.value = value;
+  String getKey() {
+    return "auto_submit";
+  }
+
+  @override
+  Future<void> load() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? data = prefs.getString(getStorageKey());
+    if (data == null) return;
+
+    bool? boolData = bool.tryParse(data, caseSensitive: false);
+    if (boolData == null) return;
+
+    setValue(boolData);
   }
 
 }
