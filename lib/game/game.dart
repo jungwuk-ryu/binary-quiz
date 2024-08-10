@@ -2,6 +2,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import 'game_setting.dart';
+
 abstract class Game<Q, A> {
   TextInputFormatter? textInputFormatter;
   final RxInt _currentRoundNo = RxInt(-1);
@@ -9,6 +11,27 @@ abstract class Game<Q, A> {
   List<GameRound> rounds = [];
   DateTime _startTime = DateTime(0);
   DateTime _endTime = DateTime(0);
+
+  Game() {
+    init();
+  }
+
+  void init() {
+    initGameSettings();
+  }
+
+  void initGameSettings() {
+    for (GameSetting setting in getAvailableSettings()) {
+      setting.init();
+    }
+  }
+
+  GameSetting? getSetting(GameSetting setting) {
+    for (GameSetting sett in getAvailableSettings()) {
+      if (sett.runtimeType == setting.runtimeType) return sett;
+    }
+    return null;
+  }
 
   void reset() {
     _currentRoundNo.value = -1;
@@ -96,6 +119,10 @@ abstract class Game<Q, A> {
   String getName();
 
   String getDescription();
+
+  List<GameSetting> getAvailableSettings();
+
+  List<Widget> getSettingWidgets();
 
 }
 

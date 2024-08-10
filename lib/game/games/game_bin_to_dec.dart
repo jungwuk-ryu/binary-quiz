@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'dart:math';
 
+import 'package:binary_quiz/game/game_setting.dart';
 import 'package:binary_quiz/modules/finish/views/game_finish_page.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -9,11 +10,20 @@ import 'package:get/get.dart';
 import '../../tools/bin_tool.dart';
 import '../../ui/widgets/border_container.dart';
 import '../game.dart';
+import '../settings/auto_submit_setting.dart';
+import '../settings/game_sound_setting.dart';
+import '../settings/max_rounds_setting.dart';
+import '../settings/max_value_dec_setting.dart';
 
 class GameBinToDec extends Game<String, int> {
-  int max;
+  final List<GameSetting> _availSettings = [
+    MaxRoundsSetting(),
+    MaxValueIntSetting(),
+    GameSoundSetting(),
+    AutoSubmitSetting()
+  ];
 
-  GameBinToDec(this.max) {
+  GameBinToDec() {
     textInputFormatter =
         FilteringTextInputFormatter.allow(RegExp(r'^[+-]?\d*\.?\d*'));
   }
@@ -57,7 +67,7 @@ class GameBinToDec extends Game<String, int> {
   }
 
   int _generateAnswer() {
-    return Random().nextInt(max);
+    return Random().nextInt(getSetting(MaxValueIntSetting())!.getValue() + 1);
   }
 
   @override
@@ -68,6 +78,17 @@ class GameBinToDec extends Game<String, int> {
   @override
   String getName() {
     return "Binary To Decimal";
+  }
+
+  @override
+  List<GameSetting> getAvailableSettings() {
+    return List<GameSetting>.from(_availSettings);
+  }
+
+  @override
+  List<Widget> getSettingWidgets() {
+    return List<Widget>.generate(
+        _availSettings.length, (index) => _availSettings[index].getWidget());
   }
 }
 

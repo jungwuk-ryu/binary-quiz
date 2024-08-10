@@ -8,11 +8,21 @@ import 'package:get/get.dart';
 import '../../tools/bin_tool.dart';
 import '../../ui/widgets/border_container.dart';
 import '../game.dart';
+import '../game_setting.dart';
+import '../settings/auto_submit_setting.dart';
+import '../settings/game_sound_setting.dart';
+import '../settings/max_rounds_setting.dart';
+import '../settings/max_value_dec_setting.dart';
 
 class GameDecToBin extends Game<int, String> {
-  int max;
+  final List<GameSetting> _availSettings = [
+    MaxRoundsSetting(),
+    MaxValueIntSetting(),
+    GameSoundSetting(),
+    AutoSubmitSetting()
+  ];
 
-  GameDecToBin(this.max) {
+  GameDecToBin() {
     textInputFormatter =
         FilteringTextInputFormatter.allow(RegExp(r'^[+-]?\d*\.?\d*'));
   }
@@ -56,7 +66,7 @@ class GameDecToBin extends Game<int, String> {
   }
 
   int _generateQuestion() {
-    return Random().nextInt(max);
+    return Random().nextInt(getSetting(MaxValueIntSetting())!.getValue() + 1);
   }
 
   @override
@@ -72,6 +82,17 @@ class GameDecToBin extends Game<int, String> {
   @override
   bool? isAnswer(v) {
     return currentRound.value?.isAnswer(v);
+  }
+
+  @override
+  List<GameSetting> getAvailableSettings() {
+    return List<GameSetting>.from(_availSettings);
+  }
+
+  @override
+  List<Widget> getSettingWidgets() {
+    return List<Widget>.generate(
+        _availSettings.length, (index) => _availSettings[index].getWidget());
   }
 }
 

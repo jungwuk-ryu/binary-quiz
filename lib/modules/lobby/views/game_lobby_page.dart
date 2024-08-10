@@ -50,24 +50,7 @@ class GameLobbyPage extends GetView<GameLobbyController> {
                             title: "⚙️ 설정",
                             body: "게임을 커스터마이징 해요",
                             backgroundColor: AppColors.grey),
-                        BorderContainer(
-                          title: "라운드",
-                          body: "최대 라운드 수를 지정합니다",
-                          textEditingController:
-                              controller.maxRoundsEditingController,
-                          keyboard: const TextInputType.numberWithOptions(
-                              decimal: false, signed: false),
-                          textFieldHint: "라운드 수 (정수)",
-                          formatters: [FilteringTextInputFormatter.digitsOnly],
-                        ),
-                        BorderContainer(
-                            title: "자동 제출",
-                            body: "정답을 입력할 경우 자동으로 다음으로 넘어갑니다.",
-                            checkBox: controller.getGameSettings().autoSubmit),
-                        BorderContainer(
-                            title: "소리 재생",
-                            body: "퀴즈 정답 여부에 따른 효과음을 재생합니다",
-                            checkBox: controller.getGameSettings().soundEnabled),
+                        ...controller.getGame().getSettingWidgets()
                       ],
                     ),
                   ),

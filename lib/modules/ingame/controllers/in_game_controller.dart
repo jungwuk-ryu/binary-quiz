@@ -1,4 +1,7 @@
-import 'package:binary_quiz/game/game_settings.dart';
+import 'package:binary_quiz/game/settings/auto_submit_setting.dart';
+import 'package:binary_quiz/game/settings/game_sound_setting.dart';
+import 'package:binary_quiz/game/settings/max_rounds_setting.dart';
+import 'package:binary_quiz/game/settings/max_value_dec_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -15,8 +18,6 @@ class InGameController extends GetxController {
   TextEditingController teController = TextEditingController();
   Game game;
 
-  final GameSettings _gameSettings = GameSettings.instance;
-
   InGameController(this.game);
 
   @override
@@ -32,11 +33,11 @@ class InGameController extends GetxController {
   }
 
   int getMaxRounds() {
-    return _gameSettings.maxRounds.value;
+    return game.getSetting(MaxRoundsSetting())!.getValue();
   }
 
   void _textEditingListener() {
-    if (_gameSettings.autoSubmit.isFalse) return;
+    if (game.getSetting(AutoSubmitSetting())!.getValue() == false) return;
     bool? result = check(false);
     if (result == true) {
       makeOnPassEvent(true);
@@ -75,7 +76,7 @@ class InGameController extends GetxController {
   }
 
   void nextGame() {
-    if (game.getCurrentRoundNo() + 1 >= _gameSettings.getMaxRounds()) {
+    if (game.getCurrentRoundNo() + 1 >= getMaxRounds()) {
       endGame();
       return;
     }
@@ -99,7 +100,7 @@ class InGameController extends GetxController {
   }
 
   Future<void> _playSound(GameSound sound) async {
-    if (_gameSettings.soundEnabled.isFalse) return;
+    if (game.getSetting(GameSoundSetting())!.getValue() == false) return;
     await _soundService.playGameSound(sound);
   }
 
