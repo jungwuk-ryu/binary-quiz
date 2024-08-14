@@ -48,11 +48,11 @@ class GameBinToDec extends Game<String, int> {
         container = GameRoundContainerBinToDec(
             question: round.getQuestion(),
             answer: round.getAnswer(),
-            totalTimeInSec: round.getEstimatedTime().inSeconds,
+            totalTimeInMS: round.getEstimatedTime().inMilliseconds,
             tryCount: 1);
       } else {
         container.tryCount++;
-        container.totalTimeInSec += round.getEstimatedTime().inSeconds;
+        container.totalTimeInMS += round.getEstimatedTime().inMilliseconds;
       }
 
       containers[round.getAnswer()] = container;
@@ -111,13 +111,13 @@ class GameRoundBinToDec extends GameRound<String, int> {
 class GameRoundContainerBinToDec extends GameRoundContainer {
   String question;
   int answer;
-  int totalTimeInSec;
+  int totalTimeInMS;
   int tryCount;
 
   GameRoundContainerBinToDec(
       {super.key, required this.question,
       required this.answer,
-      required this.totalTimeInSec,
+      required this.totalTimeInMS,
       required this.tryCount});
 
   @override
@@ -125,7 +125,7 @@ class GameRoundContainerBinToDec extends GameRoundContainer {
     return BorderContainer(
       title: question,
       body: "답: $answer\n"
-          "평균 $totalTimeInSec초 소요\n"
+          "평균 ${((totalTimeInMS.toDouble()) / tryCount / 1000).toStringAsFixed(3)}ms 소요\n"
           "$tryCount번 풀었음",
     );
   }
