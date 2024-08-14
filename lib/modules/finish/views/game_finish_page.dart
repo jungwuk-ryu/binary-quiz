@@ -28,7 +28,7 @@ class FinishPage extends StatelessWidget {
                 ]),
                 BorderContainer(
                 title: "총 ${containers.length} 문제를 풀었어요",
-                body: "${game.getEstimatedTime().inSeconds}초 소요"),
+                body: "${game.getEstimatedTime().inSeconds}.${(game.getEstimatedTime().inMilliseconds % 1000)}초 소요"),
             Expanded(
                     child: DynMouseScroll(
                       builder: (context, controller, physics) => ListView.builder(
