@@ -1,12 +1,13 @@
 import 'dart:async';
 
-import 'package:binary_quiz/ui/themes/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
+import '../themes/app_colors.dart';
 
 class CustomKeypad extends StatelessWidget {
   static const String deletionMagicKey = "-1";

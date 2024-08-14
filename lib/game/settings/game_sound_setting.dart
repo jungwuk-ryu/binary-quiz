@@ -1,9 +1,9 @@
-import 'package:binary_quiz/game/game_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../ui/widgets/border_container.dart';
+import '../game_setting.dart';
 
 class GameSoundSetting extends GameSetting<bool> {
   final RxBool soundEnabled = RxBool(true);

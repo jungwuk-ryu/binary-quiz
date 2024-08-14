@@ -1,10 +1,10 @@
-import 'package:binary_quiz/game/settings/auto_submit_setting.dart';
-import 'package:binary_quiz/game/settings/game_sound_setting.dart';
-import 'package:binary_quiz/game/settings/max_rounds_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../game/game.dart';
+import '../../../game/settings/auto_submit_setting.dart';
+import '../../../game/settings/game_sound_setting.dart';
+import '../../../game/settings/max_rounds_setting.dart';
 import '../../../services/game_sound_service.dart';
 import '../../../ui/widgets/custom_keypad.dart';
 

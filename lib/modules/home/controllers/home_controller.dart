@@ -1,7 +1,7 @@
-import 'package:binary_quiz/services/game_service.dart';
 import 'package:get/get.dart';
 
 import '../../../game/game.dart';
+import '../../../services/game_service.dart';
 
 class HomeController extends GetxController {
   final Rxn<Game> selectedGame = Rxn<Game>();

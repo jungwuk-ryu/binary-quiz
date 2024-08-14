@@ -1,6 +1,6 @@
-import 'package:binary_quiz/services/game_service.dart';
 import 'package:get/get.dart';
 
+import '../../../services/game_service.dart';
 import '../controllers/home_controller.dart';
 
 class HomeBindings extends Bindings {

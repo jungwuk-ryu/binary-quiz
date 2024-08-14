@@ -1,10 +1,10 @@
-import 'package:binary_quiz/game/game_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../ui/widgets/border_container.dart';
+import '../game_setting.dart';
 
 class MaxRoundsSetting extends GameSetting<int> {
   final TextEditingController controller = TextEditingController(text: "20");

@@ -1,8 +1,8 @@
-import 'package:binary_quiz/ui/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../ui/themes/app_colors.dart';
 import '../../../ui/widgets/border_container.dart';
 import '../../../ui/widgets/custom_button.dart';
 import '../../../ui/widgets/exit_button.dart';

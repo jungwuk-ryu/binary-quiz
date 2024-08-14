@@ -1,14 +1,14 @@
 import 'dart:math';
 
-import 'package:binary_quiz/game/game_setting.dart';
-import 'package:binary_quiz/modules/finish/views/game_finish_page.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../modules/finish/views/game_finish_page.dart';
 import '../../tools/bin_tool.dart';
 import '../../ui/widgets/border_container.dart';
 import '../game.dart';
+import '../game_setting.dart';
 import '../settings/auto_submit_setting.dart';
 import '../settings/game_sound_setting.dart';
 import '../settings/max_rounds_setting.dart';

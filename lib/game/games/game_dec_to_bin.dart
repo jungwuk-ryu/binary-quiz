@@ -1,10 +1,10 @@
 import 'dart:math';
 
-import 'package:binary_quiz/modules/finish/views/game_finish_page.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../modules/finish/views/game_finish_page.dart';
 import '../../tools/bin_tool.dart';
 import '../../ui/widgets/border_container.dart';
 import '../game.dart';
