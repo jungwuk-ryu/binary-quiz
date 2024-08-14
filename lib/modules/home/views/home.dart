@@ -11,8 +11,8 @@ import '../../../ui/widgets/custom_button.dart';
 import '../../../ui/widgets/title_text.dart';
 import '../controllers/home_controller.dart';
 
-class MainPage extends GetView<HomeController> {
-  const MainPage({super.key});
+class Home extends GetView<HomeController> {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +26,12 @@ class MainPage extends GetView<HomeController> {
               TitleText('general.app_title'.tr),
               SizedBox(height: 12.h),
               BorderContainer(
-                  title: 'module.main.app_desc.title'.tr,
-                  body: 'module.main.app_desc.content'.tr),
+                  title: 'module.home.app_desc.title'.tr,
+                  body: 'module.home.app_desc.content'.tr),
               SizedBox(height: 20.h),
             BorderContainer(
-                title: 'module.main.quiz_desc.title'.tr,
-                body: 'module.main.quiz_desc.body'.tr,
+                title: 'module.home.quiz_desc.title'.tr,
+                body: 'module.home.quiz_desc.body'.tr,
                 backgroundColor: AppColors.grey),
               Expanded(child: _GameListView(controller.getAvailableGames())),
               SizedBox(height: 12.h),
@@ -46,7 +46,7 @@ class MainPage extends GetView<HomeController> {
 
   void _onButtonClick() {
     if (!controller.hasSelectedGame()) {
-      MyTool.snackbar(title: 'module.main.select_quiz'.tr);
+      MyTool.snackbar(title: 'module.home.select_quiz'.tr);
       return;
     }
 
