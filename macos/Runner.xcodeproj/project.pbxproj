@@ -27,6 +27,7 @@
 		33CC10F32044A3C60003C045 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33CC10F22044A3C60003C045 /* Assets.xcassets */; };
 		33CC10F62044A3C60003C045 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CC10F42044A3C60003C045 /* MainMenu.xib */; };
 		33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CC11122044BFA00003C045 /* MainFlutterWindow.swift */; };
+		40292FB10FD518DC89233FC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C6A711456374E1666908615 /* GoogleService-Info.plist */; };
 		520B5B8CF911A041E8E42464 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B6AB2180F9BB13D2CCDF3D /* Pods_Runner.framework */; };
 		F75B8A5453FD257412C5FBDE /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98EB36E17BD4A85744037C01 /* Pods_RunnerTests.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		038AB147D66B623C67B2BC50 /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		093664916FD9527E76AE0B35 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		1B09A06EE27ACDAC5F332F15 /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
+		2C6A711456374E1666908615 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		331C80D5294CF71000263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		331C80D7294CF71000263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		333000ED22D3DE5D00554162 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				33CC10EE2044A3C60003C045 /* Products */,
 				D73912EC22F37F3D000D13A0 /* Frameworks */,
 				4EB5D00BA695334952D06BC3 /* Pods */,
+				2C6A711456374E1666908615 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -317,6 +320,7 @@
 			files = (
 				33CC10F32044A3C60003C045 /* Assets.xcassets in Resources */,
 				33CC10F62044A3C60003C045 /* MainMenu.xib in Resources */,
+				40292FB10FD518DC89233FC3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
