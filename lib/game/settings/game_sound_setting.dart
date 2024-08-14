@@ -13,9 +13,9 @@ class GameSoundSetting extends GameSetting<bool> {
   @override
   void init() {
     super.init();
-   soundEnabled.listen((p0) {
-     setValue(p0);
-   });
+    soundEnabled.listen((p0) {
+      setValue(p0);
+    });
   }
 
   @override
@@ -50,7 +50,6 @@ class GameSoundSetting extends GameSetting<bool> {
 
     setValue(boolData);
   }
-
 }
 
 class _GameSoundSettingWidget extends StatelessWidget {
@@ -64,7 +63,5 @@ class _GameSoundSettingWidget extends StatelessWidget {
         title: "game.settings.game_sound.widget.title".tr,
         body: "game.settings.game_sound.widget.body".tr,
         checkBox: rxBool);
-
   }
-
 }

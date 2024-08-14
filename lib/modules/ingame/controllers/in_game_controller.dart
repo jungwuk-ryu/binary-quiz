@@ -8,7 +8,6 @@ import '../../../game/game.dart';
 import '../../../services/game_sound_service.dart';
 import '../../../ui/widgets/custom_keypad.dart';
 
-
 class InGameController extends GetxController {
   final GameSoundService _soundService = Get.find<GameSoundService>();
   Function()? _onPass;
@@ -25,7 +24,6 @@ class InGameController extends GetxController {
     teController.addListener(_textEditingListener);
     init();
   }
-
 
   int getCurrentRounds() {
     return game.getCurrentRoundNo();
@@ -115,9 +113,8 @@ class InGameController extends GetxController {
 
   void _makeEvent(bool async, Function? func) {
     if (async) {
-      Future.delayed(const Duration(seconds: 0), () => {
-        if (func != null) func.call()
-      });
+      Future.delayed(
+          const Duration(seconds: 0), () => {if (func != null) func.call()});
     } else {
       func?.call();
     }

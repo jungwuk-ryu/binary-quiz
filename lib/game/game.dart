@@ -121,10 +121,9 @@ abstract class Game<Q, A> {
   List<Widget> getSettingWidgets();
 
   String getKey();
-
 }
 
-abstract class GameRound<Q,A> {
+abstract class GameRound<Q, A> {
   final Q question;
   final A answer;
   final int roundNo;
@@ -132,7 +131,8 @@ abstract class GameRound<Q,A> {
   DateTime _startTime = DateTime(0);
   DateTime _endTime = DateTime(0);
 
-  GameRound({required this.roundNo, required this.question, required this.answer});
+  GameRound(
+      {required this.roundNo, required this.question, required this.answer});
 
   A getAnswer() {
     return answer;
@@ -141,6 +141,7 @@ abstract class GameRound<Q,A> {
   Q getQuestion() {
     return question;
   }
+
   bool isAnswer(dynamic value);
 
   void setStartTime() {

@@ -57,7 +57,6 @@ class MaxRoundsSetting extends GameSetting<int> {
     setValue(intData);
     controller.text = "$intData";
   }
-
 }
 
 class _MaxRoundsSettingWidget extends StatelessWidget {
@@ -70,10 +69,9 @@ class _MaxRoundsSettingWidget extends StatelessWidget {
     return BorderContainer(
       title: "game.settings.max_rounds.widget.title".tr,
       body: "game.settings.max_rounds.widget.body".tr,
-      textEditingController:
-      controller,
-      keyboard: const TextInputType.numberWithOptions(
-          decimal: false, signed: false),
+      textEditingController: controller,
+      keyboard:
+          const TextInputType.numberWithOptions(decimal: false, signed: false),
       textFieldHint: "game.settings.max_rounds.widget.textFieldHint".tr,
       formatters: [FilteringTextInputFormatter.digitsOnly],
     );

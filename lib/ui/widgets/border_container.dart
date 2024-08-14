@@ -110,7 +110,7 @@ class BorderContainer extends StatelessWidget {
 
   Widget _getBodyTextWidget() {
     return Text(body,
-        style:
-            TextStyle(color: AppColors.textBlueGrey, fontSize: fontRawSize.spMin));
+        style: TextStyle(
+            color: AppColors.textBlueGrey, fontSize: fontRawSize.spMin));
   }
 }

@@ -18,9 +18,9 @@ class AppPages {
       binding: HomeBindings(),
     ),
     GetPage(
-        name: _Paths.LOBBY,
-        page: () => const GameLobbyPage(),
-        binding: GameLobbyBindings(),
+      name: _Paths.LOBBY,
+      page: () => const GameLobbyPage(),
+      binding: GameLobbyBindings(),
     ),
   ];
 }

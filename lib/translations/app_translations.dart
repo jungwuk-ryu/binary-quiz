@@ -18,16 +18,16 @@ class AppTranslations extends Translations {
 
   @override
   Map<String, Map<String, String>> get keys => {
-    'en_US': enUS,
-    'ko_KR': koKR,
-    'ja_JP': jaJP,
-    'zh_CN': zhCN,
-    'hi_IN': hiIN,
-    'es_ES': esES,
-    'es_LA': esLA,
-    'ru_RU': ruRU,
-    'de_DE': deDE
-  };
+        'en_US': enUS,
+        'ko_KR': koKR,
+        'ja_JP': jaJP,
+        'zh_CN': zhCN,
+        'hi_IN': hiIN,
+        'es_ES': esES,
+        'es_LA': esLA,
+        'ru_RU': ruRU,
+        'de_DE': deDE
+      };
 
   static Future<void> load() async {
     debugPrint("load translations...");
@@ -43,7 +43,8 @@ class AppTranslations extends Translations {
     ruRU = await loadJson('assets/lang/ru_RU.json');
     deDE = await loadJson('assets/lang/de_DE.json');
 
-    debugPrint("translations loaded in ${DateTime.now().millisecondsSinceEpoch - l1}ms");
+    debugPrint(
+        "translations loaded in ${DateTime.now().millisecondsSinceEpoch - l1}ms");
   }
 
   static Future<Map<String, String>> loadJson(String path) async {

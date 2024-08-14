@@ -128,7 +128,6 @@ class InGamePage extends GetView<InGameController> {
     );
   }
 
-
   void _onPass() {
     _setColor(const Color(0xFFC9FFBA));
     controller.nextGame();

@@ -24,7 +24,8 @@ class GameBinToDec extends Game<String, int> {
       MaxRoundsSetting(this),
       MaxValueIntSetting(this),
       GameSoundSetting(this),
-      AutoSubmitSetting(this)]);
+      AutoSubmitSetting(this)
+    ]);
   }
 
   @override
@@ -32,7 +33,8 @@ class GameBinToDec extends Game<String, int> {
     int answer = _generateAnswer();
     String question = BinTool.int2bin(answer);
 
-    GameRoundBinToDec round = GameRoundBinToDec(roundNo: roundNo, question: question, answer: answer);
+    GameRoundBinToDec round =
+        GameRoundBinToDec(roundNo: roundNo, question: question, answer: answer);
     return round;
   }
 
@@ -60,9 +62,9 @@ class GameBinToDec extends Game<String, int> {
 
     List<GameRoundContainerBinToDec> values = List.from(containers.values);
     Get.off(() => FinishPage(
-      game: this,
-      containers: List.generate(values.length, (index) => values[index]),
-    ));
+          game: this,
+          containers: List.generate(values.length, (index) => values[index]),
+        ));
   }
 
   int _generateAnswer() {
@@ -97,7 +99,8 @@ class GameBinToDec extends Game<String, int> {
 }
 
 class GameRoundBinToDec extends GameRound<String, int> {
-  GameRoundBinToDec({required super.roundNo, required super.question, required super.answer});
+  GameRoundBinToDec(
+      {required super.roundNo, required super.question, required super.answer});
 
   @override
   bool isAnswer(value) {
@@ -115,7 +118,8 @@ class GameRoundContainerBinToDec extends GameRoundContainer {
   int tryCount;
 
   GameRoundContainerBinToDec(
-      {super.key, required this.question,
+      {super.key,
+      required this.question,
       required this.answer,
       required this.totalTimeInMS,
       required this.tryCount});
@@ -123,10 +127,12 @@ class GameRoundContainerBinToDec extends GameRoundContainer {
   @override
   Widget build(BuildContext context) {
     return BorderContainer(
-      title: 'game.btd.con.title'.trParams({'1': question}),
-      body: 'game.btd.con.body'.trParams({'1': "$answer",
-      '2': ((totalTimeInMS.toDouble()) / tryCount / 1000).toStringAsFixed(3),
-      '3': "$tryCount"})
-    );
+        title: 'game.btd.con.title'.trParams({'1': question}),
+        body: 'game.btd.con.body'.trParams({
+          '1': "$answer",
+          '2':
+              ((totalTimeInMS.toDouble()) / tryCount / 1000).toStringAsFixed(3),
+          '3': "$tryCount"
+        }));
   }
 }

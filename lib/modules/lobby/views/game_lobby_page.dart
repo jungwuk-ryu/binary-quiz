@@ -36,8 +36,7 @@ class GameLobbyPage extends GetView<GameLobbyController> {
                       delegate: SliverChildListDelegate([
                     BorderContainer(
                         title: "📖 ${controller.getGame().getName()}",
-                        body:
-                            controller.getGame().getDescription()),
+                        body: controller.getGame().getDescription()),
                     SizedBox(height: 20.h)
                   ])),
                   SliverFillRemaining(
@@ -56,7 +55,9 @@ class GameLobbyPage extends GetView<GameLobbyController> {
                 ],
               )),
               SizedBox(height: 12.h),
-              CustomButton(text: 'module.lobby.start_quiz'.tr, onClick: controller.startGame),
+              CustomButton(
+                  text: 'module.lobby.start_quiz'.tr,
+                  onClick: controller.startGame),
               SizedBox(height: 12.h),
             ],
           ),

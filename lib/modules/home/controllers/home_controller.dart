@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../../game/game.dart';
 
-
 class HomeController extends GetxController {
   final Rxn<Game> selectedGame = Rxn<Game>();
 
@@ -35,5 +34,4 @@ class HomeController extends GetxController {
   Game? getSelectedGame() {
     return selectedGame.value;
   }
-
 }

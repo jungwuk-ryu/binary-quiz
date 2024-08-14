@@ -15,7 +15,8 @@ class GameLobbyController extends GetxController {
   void startGame() {
     int? maxRounds = getGame().getSetting(MaxRoundsSetting)?.getValue();
     if (maxRounds == null || maxRounds < 1) {
-      MyTool.snackbar(title: 'module.lobby.invalid_setting.max_rounds.title'.tr,
+      MyTool.snackbar(
+          title: 'module.lobby.invalid_setting.max_rounds.title'.tr,
           body: 'module.lobby.invalid_setting.max_rounds.content'.tr);
       return;
     }
@@ -23,7 +24,6 @@ class GameLobbyController extends GetxController {
     InGameController gameController = InGameController(getGame());
 
     Get.to(() => GetBuilder(
-        builder: (controller) => InGamePage(),
-        init: gameController));
+        builder: (controller) => InGamePage(), init: gameController));
   }
 }

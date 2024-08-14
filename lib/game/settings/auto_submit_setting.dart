@@ -50,7 +50,6 @@ class AutoSubmitSetting extends GameSetting<bool> {
 
     setValue(boolData);
   }
-
 }
 
 class _AutoSubmitSettingWidget extends StatelessWidget {
@@ -65,5 +64,4 @@ class _AutoSubmitSettingWidget extends StatelessWidget {
         body: "game.settings.auto_submit.widget.body".tr,
         checkBox: rxBool);
   }
-
 }

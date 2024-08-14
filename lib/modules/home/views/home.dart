@@ -29,13 +29,14 @@ class Home extends GetView<HomeController> {
                   title: 'module.home.app_desc.title'.tr,
                   body: 'module.home.app_desc.content'.tr),
               SizedBox(height: 20.h),
-            BorderContainer(
-                title: 'module.home.quiz_desc.title'.tr,
-                body: 'module.home.quiz_desc.body'.tr,
-                backgroundColor: AppColors.grey),
+              BorderContainer(
+                  title: 'module.home.quiz_desc.title'.tr,
+                  body: 'module.home.quiz_desc.body'.tr,
+                  backgroundColor: AppColors.grey),
               Expanded(child: _GameListView(controller.getAvailableGames())),
               SizedBox(height: 12.h),
-              CustomButton(text: 'general.selected'.tr, onClick: _onButtonClick),
+              CustomButton(
+                  text: 'general.selected'.tr, onClick: _onButtonClick),
               SizedBox(height: 12.h),
             ],
           ),
@@ -63,10 +64,9 @@ class _GameListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: gameList.length,
-        itemBuilder: (context, index) => _SelectableBorderContainer(gameList[index])
-    );
+        itemBuilder: (context, index) =>
+            _SelectableBorderContainer(gameList[index]));
   }
-
 }
 
 class _SelectableBorderContainer extends GetView<HomeController> {
@@ -91,12 +91,11 @@ class _SelectableBorderContainer extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _onTap,
-      child:
-          BorderContainer(
-            title: game.getName(),
-            body: game.getDescription(),
-            checkBox: isSelected,
-          ),
+      child: BorderContainer(
+        title: game.getName(),
+        body: game.getDescription(),
+        checkBox: isSelected,
+      ),
     );
   }
 

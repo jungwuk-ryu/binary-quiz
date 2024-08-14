@@ -33,7 +33,8 @@ class GameDecToBin extends Game<int, String> {
     int question = _generateQuestion();
     String answer = BinTool.int2bin(question);
 
-    GameRoundDecToBin round = GameRoundDecToBin(roundNo: roundNo, question: question, answer: answer);
+    GameRoundDecToBin round =
+        GameRoundDecToBin(roundNo: roundNo, question: question, answer: answer);
     return round;
   }
 
@@ -61,9 +62,9 @@ class GameDecToBin extends Game<int, String> {
 
     List<GameRoundContainerDecToBin> values = List.from(containers.values);
     Get.off(() => FinishPage(
-      game: this,
-      containers: List.generate(values.length, (index) => values[index]),
-    ));
+          game: this,
+          containers: List.generate(values.length, (index) => values[index]),
+        ));
   }
 
   int _generateQuestion() {
@@ -103,7 +104,8 @@ class GameDecToBin extends Game<int, String> {
 }
 
 class GameRoundDecToBin extends GameRound<int, String> {
-  GameRoundDecToBin({required super.roundNo, required super.question, required super.answer});
+  GameRoundDecToBin(
+      {required super.roundNo, required super.question, required super.answer});
 
   @override
   bool isAnswer(value) {
@@ -121,7 +123,8 @@ class GameRoundContainerDecToBin extends GameRoundContainer {
   int tryCount;
 
   GameRoundContainerDecToBin(
-      {super.key, required this.question,
+      {super.key,
+      required this.question,
       required this.answer,
       required this.totalTimeInMS,
       required this.tryCount});
@@ -129,12 +132,12 @@ class GameRoundContainerDecToBin extends GameRoundContainer {
   @override
   Widget build(BuildContext context) {
     return BorderContainer(
-      title: "game.dtb.con.title".trParams({'1': "$question"}),
-      body: "game.dtb.con.body".trParams({
-        '1': answer,
-        '2': ((totalTimeInMS.toDouble()) / tryCount / 1000).toStringAsFixed(3),
-        '3': "$tryCount"
-      })
-    );
+        title: "game.dtb.con.title".trParams({'1': "$question"}),
+        body: "game.dtb.con.body".trParams({
+          '1': answer,
+          '2':
+              ((totalTimeInMS.toDouble()) / tryCount / 1000).toStringAsFixed(3),
+          '3': "$tryCount"
+        }));
   }
 }

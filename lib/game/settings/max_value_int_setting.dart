@@ -57,7 +57,6 @@ class MaxValueIntSetting extends GameSetting<int> {
     setValue(intData);
     controller.text = "$intData";
   }
-
 }
 
 class _MaxValueIntSettingWidget extends StatelessWidget {
@@ -70,10 +69,9 @@ class _MaxValueIntSettingWidget extends StatelessWidget {
     return BorderContainer(
       title: "game.settings.max_value_int.widget.title".tr,
       body: "game.settings.max_value_int.widget.body".tr,
-      textEditingController:
-      controller,
-      keyboard: const TextInputType.numberWithOptions(
-          decimal: false, signed: false),
+      textEditingController: controller,
+      keyboard:
+          const TextInputType.numberWithOptions(decimal: false, signed: false),
       textFieldHint: "game.settings.max_value_int.widget.textFieldHint".tr,
       formatters: [FilteringTextInputFormatter.digitsOnly],
     );
