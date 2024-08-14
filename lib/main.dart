@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:binary_quiz/translations/app_translations.dart';
 import 'package:binary_quiz/ui/themes/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -21,7 +22,8 @@ void main() async {
 
   await Future.wait([
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
-    SharedPreferences.getInstance()
+    SharedPreferences.getInstance(),
+    AppTranslations.load()
   ]);
 
   // Firebase Crashlytics - 비정상 종료 핸들러 구성
@@ -92,6 +94,9 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(colorSchemeSeed: AppColors.primary),
             initialRoute: AppPages.INITIAL,
             getPages: AppPages.routes,
+            translations: AppTranslations(),
+            fallbackLocale: const Locale('en', 'US'),
+            locale: Get.deviceLocale,
           );
         });
   }

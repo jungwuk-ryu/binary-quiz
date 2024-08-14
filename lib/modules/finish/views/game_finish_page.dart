@@ -23,12 +23,14 @@ class FinishPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  TitleText("결과"),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  TitleText("module.finish.title".tr),
                 ]),
                 BorderContainer(
-                title: "총 ${containers.length} 문제를 풀었어요",
-                body: "${game.getEstimatedTime().inSeconds}.${(game.getEstimatedTime().inMilliseconds % 1000)}초 소요"),
+                title: 'module.finish.solved'.trParams({'solvedCount': "${containers.length}"}),
+                body: "module.finish.solved_time".trParams({
+                  '1': "${game.getEstimatedTime().inSeconds}.${(game.getEstimatedTime().inMilliseconds % 1000)}"
+                })),
             Expanded(
                     child: DynMouseScroll(
                       builder: (context, controller, physics) => ListView.builder(
@@ -39,7 +41,7 @@ class FinishPage extends StatelessWidget {
                         itemCount: containers.length),)),
                 SizedBox(height: 5.h),
                 CustomButton(
-                    text: "나가기",
+                    text: 'general.exit'.tr,
                     onClick: () {
                       Get.back();
                     }),

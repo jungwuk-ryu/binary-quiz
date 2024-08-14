@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../game/game.dart';
+import '../../../routes/app_pages.dart';
 import '../../../tools/my_tool.dart';
 import '../../../ui/themes/app_colors.dart';
-import '../controllers/home_controller.dart';
-import '../../../routes/app_pages.dart';
 import '../../../ui/widgets/border_container.dart';
 import '../../../ui/widgets/custom_button.dart';
 import '../../../ui/widgets/title_text.dart';
+import '../controllers/home_controller.dart';
 
 class MainPage extends GetView<HomeController> {
   const MainPage({super.key});
@@ -23,20 +23,19 @@ class MainPage extends GetView<HomeController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const TitleText("Binary Quiz"),
+              TitleText('general.app_title'.tr),
               SizedBox(height: 12.h),
-              const BorderContainer(
-                  title: "📖 앱 설명",
-                  body:
-                  "Binary Quiz는 이진수 계산 능력을 향상시킬 수 있는 앱입니다.\n반복 연습을 통해 당신의 계산 속도를 향상시켜보세요!"),
+              BorderContainer(
+                  title: 'module.main.app_desc.title'.tr,
+                  body: 'module.main.app_desc.content'.tr),
               SizedBox(height: 20.h),
-            const BorderContainer(
-                title: "🕹️ 퀴즈",
-                body: "즐기고 싶은 퀴즈를 선택하세요",
+            BorderContainer(
+                title: 'module.main.quiz_desc.title'.tr,
+                body: 'module.main.quiz_desc.body'.tr,
                 backgroundColor: AppColors.grey),
               Expanded(child: _GameListView(controller.getAvailableGames())),
               SizedBox(height: 12.h),
-              CustomButton(text: "선택했어요", onClick: _onButtonClick),
+              CustomButton(text: 'general.selected'.tr, onClick: _onButtonClick),
               SizedBox(height: 12.h),
             ],
           ),
@@ -47,7 +46,7 @@ class MainPage extends GetView<HomeController> {
 
   void _onButtonClick() {
     if (!controller.hasSelectedGame()) {
-      MyTool.snackbar(title: "게임을 선택해주세요");
+      MyTool.snackbar(title: 'module.main.select_quiz'.tr);
       return;
     }
 

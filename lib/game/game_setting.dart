@@ -1,7 +1,5 @@
 import 'package:binary_quiz/game/game.dart';
-import 'package:binary_quiz/modules/home/controllers/home_controller.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class GameSetting<V> {

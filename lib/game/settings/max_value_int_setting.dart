@@ -1,7 +1,7 @@
 import 'package:binary_quiz/game/game_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../ui/widgets/border_container.dart';
@@ -68,13 +68,13 @@ class _MaxValueIntSettingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BorderContainer(
-      title: "최댓값(정수)",
-      body: "최댓값을 지정합니다",
+      title: "game.settings.max_value_int.widget.title".tr,
+      body: "game.settings.max_value_int.widget.body".tr,
       textEditingController:
       controller,
       keyboard: const TextInputType.numberWithOptions(
           decimal: false, signed: false),
-      textFieldHint: "라운드 수 (정수)",
+      textFieldHint: "game.settings.max_value_int.widget.textFieldHint".tr,
       formatters: [FilteringTextInputFormatter.digitsOnly],
     );
   }

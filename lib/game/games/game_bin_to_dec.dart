@@ -71,12 +71,12 @@ class GameBinToDec extends Game<String, int> {
 
   @override
   String getDescription() {
-    return "이진수를 십진수로 변환하는 퀴즈입니다.";
+    return "game.btd.desc".tr;
   }
 
   @override
   String getName() {
-    return "Binary To Decimal";
+    return "game.btd.name".tr;
   }
 
   @override
@@ -123,10 +123,10 @@ class GameRoundContainerBinToDec extends GameRoundContainer {
   @override
   Widget build(BuildContext context) {
     return BorderContainer(
-      title: question,
-      body: "답: $answer\n"
-          "평균 ${((totalTimeInMS.toDouble()) / tryCount / 1000).toStringAsFixed(3)}ms 소요\n"
-          "$tryCount번 풀었음",
+      title: 'game.btd.con.title'.trParams({'1': question}),
+      body: 'game.btd.con.body'.trParams({'1': "$answer",
+      '2': ((totalTimeInMS.toDouble()) / tryCount / 1000).toStringAsFixed(3),
+      '3': "$tryCount"})
     );
   }
 }

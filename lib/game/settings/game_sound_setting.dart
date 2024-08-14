@@ -61,8 +61,8 @@ class _GameSoundSettingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BorderContainer(
-        title: "소리 재생",
-        body: "퀴즈 정답 여부에 따른 효과음을 재생합니다",
+        title: "game.settings.game_sound.widget.title".tr,
+        body: "game.settings.game_sound.widget.body".tr,
         checkBox: rxBool);
 
   }

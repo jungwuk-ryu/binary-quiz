@@ -1,6 +1,6 @@
 import 'package:binary_quiz/game/game_setting.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../ui/widgets/border_container.dart';
@@ -61,8 +61,8 @@ class _AutoSubmitSettingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BorderContainer(
-        title: "자동 제출",
-        body: "정답을 입력할 경우 자동으로 다음으로 넘어갑니다.",
+        title: "game.settings.auto_submit.widget.title".tr,
+        body: "game.settings.auto_submit.widget.body".tr,
         checkBox: rxBool);
   }
 

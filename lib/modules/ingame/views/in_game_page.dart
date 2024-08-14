@@ -39,10 +39,10 @@ class InGamePage extends GetView<InGameController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(children: [
-          TitleText("퀴즈"),
-          Expanded(child: SizedBox()),
-          ExitButton()
+        Row(children: [
+          TitleText("module.in_game.title".tr),
+          const Expanded(child: SizedBox()),
+          const ExitButton()
         ]),
         SizedBox(height: 20.h),
         _getProgressBar(),
@@ -87,10 +87,10 @@ class InGamePage extends GetView<InGameController> {
                     child: Center(
                       child: TextField(
                           controller: controller.teController,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.zero,
-                              hintText: "정답 입력"),
+                              hintText: "module.in_game.enter_answer".tr),
                           style: TextStyle(
                               fontSize: 20.spMin, fontWeight: FontWeight.bold),
                           autofocus: !(Platform.isAndroid || Platform.isIOS),
@@ -120,7 +120,7 @@ class InGamePage extends GetView<InGameController> {
             )),
         SizedBox(height: 20.h),
         CustomButton(
-            text: "입력 완료",
+            text: "module.in_game.entered_answer".tr,
             onClick: () {
               checkAnswer();
             })

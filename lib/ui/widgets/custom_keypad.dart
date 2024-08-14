@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class CustomKeypad extends StatelessWidget {
   static const String deletionMagicKey = "-1";
@@ -31,7 +32,7 @@ class CustomKeypad extends StatelessWidget {
           Flexible(
               flex: 1,
               child: _Button(
-                  character: "지우기",
+                  character: 'keypad.remove'.tr,
                   onPressed: (c) => onPressed(deletionMagicKey))),
           Flexible(
               flex: (numbers.length / 3).ceil() + 4,

@@ -248,5 +248,16 @@
     </array>
     <key>NSUserTrackingUsageDescription</key>
     <string>조금 더 유용한 광고가 표시되도록 도와드릴게요</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+    	<string>de</string>
+    	<string>en</string>
+    	<string>es</string>
+    	<string>hi</string>
+    	<string>ja</string>
+    	<string>ko</string>
+    	<string>ru</string>
+    	<string>zh</string>
+    </array>
 </dict>
 </plist>

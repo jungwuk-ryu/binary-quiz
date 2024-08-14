@@ -1,14 +1,13 @@
 import 'package:binary_quiz/ui/themes/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../ui/widgets/exit_button.dart';
-import '../controllers/game_lobby_controller.dart';
 import '../../../ui/widgets/border_container.dart';
 import '../../../ui/widgets/custom_button.dart';
+import '../../../ui/widgets/exit_button.dart';
 import '../../../ui/widgets/title_text.dart';
+import '../controllers/game_lobby_controller.dart';
 
 class GameLobbyPage extends GetView<GameLobbyController> {
   const GameLobbyPage({super.key});
@@ -22,11 +21,11 @@ class GameLobbyPage extends GetView<GameLobbyController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Row(
+              Row(
                 children: [
-                  TitleText("Binary Quiz"),
-                  Expanded(child: SizedBox()),
-                  ExitButton(),
+                  TitleText("general.app_title".tr),
+                  const Expanded(child: SizedBox()),
+                  const ExitButton(),
                 ],
               ),
               SizedBox(height: 12.h),
@@ -46,9 +45,9 @@ class GameLobbyPage extends GetView<GameLobbyController> {
                     child: Column(
                       children: [
                         const Expanded(child: SizedBox()),
-                        const BorderContainer(
-                            title: "⚙️ 설정",
-                            body: "게임을 커스터마이징 해요",
+                        BorderContainer(
+                            title: 'module.lobby.setting_desc.title'.tr,
+                            body: 'module.lobby.setting_desc.content'.tr,
                             backgroundColor: AppColors.grey),
                         ...controller.getGame().getSettingWidgets()
                       ],
@@ -57,7 +56,7 @@ class GameLobbyPage extends GetView<GameLobbyController> {
                 ],
               )),
               SizedBox(height: 12.h),
-              CustomButton(text: "시작", onClick: controller.startGame),
+              CustomButton(text: 'module.lobby.start_quiz'.tr, onClick: controller.startGame),
               SizedBox(height: 12.h),
             ],
           ),

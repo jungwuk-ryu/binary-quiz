@@ -72,7 +72,7 @@ class GameDecToBin extends Game<int, String> {
 
   @override
   String getDescription() {
-    return "십진수를 이진수로 변환하는 퀴즈입니다.";
+    return "game.dtb.desc".tr;
   }
 
   @override
@@ -129,10 +129,12 @@ class GameRoundContainerDecToBin extends GameRoundContainer {
   @override
   Widget build(BuildContext context) {
     return BorderContainer(
-      title: "$question",
-      body: "답: $answer\n"
-          "평균 ${((totalTimeInMS.toDouble()) / tryCount / 1000).toStringAsFixed(3)}ms초 소요\n"
-          "$tryCount번 풀었음",
+      title: "game.dtb.con.title".trParams({'1': "$question"}),
+      body: "game.dtb.con.body".trParams({
+        '1': answer,
+        '2': ((totalTimeInMS.toDouble()) / tryCount / 1000).toStringAsFixed(3),
+        '3': "$tryCount"
+      })
     );
   }
 }
