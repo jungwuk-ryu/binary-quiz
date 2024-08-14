@@ -84,25 +84,27 @@ class InGamePage extends GetView<InGameController> {
                       color: _textFieldColor.value,
                       borderRadius: BorderRadius.circular(12.r),
                     ),
-                    child: TextField(
-                        controller: controller.teController,
-                        decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.zero,
-                            hintText: "정답 입력"),
-                        style: TextStyle(
-                            fontSize: 20.spMin, fontWeight: FontWeight.bold),
-                        autofocus: !(Platform.isAndroid || Platform.isIOS),
-                        onTapOutside: (event) =>
-                            FocusScope.of(Get.context!).unfocus(),
-                        keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true, signed: true),
-                        onEditingComplete: () {},
-                        onSubmitted: (value) => checkAnswer(),
-                        inputFormatters: [
-                          if (controller.game.textInputFormatter != null)
-                            controller.game.textInputFormatter!,
-                        ]),
+                    child: Center(
+                      child: TextField(
+                          controller: controller.teController,
+                          decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.zero,
+                              hintText: "정답 입력"),
+                          style: TextStyle(
+                              fontSize: 20.spMin, fontWeight: FontWeight.bold),
+                          autofocus: !(Platform.isAndroid || Platform.isIOS),
+                          onTapOutside: (event) =>
+                              FocusScope.of(Get.context!).unfocus(),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true, signed: true),
+                          onEditingComplete: () {},
+                          onSubmitted: (value) => checkAnswer(),
+                          inputFormatters: [
+                            if (controller.game.textInputFormatter != null)
+                              controller.game.textInputFormatter!,
+                          ]),
+                    ),
                   )),
             ))
           ],
