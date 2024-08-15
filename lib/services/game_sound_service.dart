@@ -28,8 +28,8 @@ class GameSoundService extends GetxService {
   }
 
   Future<void> _loadSounds() async {
-    Future<int> icf = _loadSound("sounds/incorrect.mp3");
-    Future<int> cf = _loadSound("sounds/correct.mp3");
+    Future<int> icf = _loadSound("assets/sounds/incorrect.mp3");
+    Future<int> cf = _loadSound("assets/sounds/correct.mp3");
 
     soundIdMap[GameSound.incorrect] = await icf;
     soundIdMap[GameSound.correct] = await cf;
