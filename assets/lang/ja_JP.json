@@ -32,9 +32,9 @@
   "game.dtb.desc": "10進数を2進数に変換するクイズです。",
   "game.dtb.name": "10進数から2進数へ",
   "game.dtb.con.title": "@1",
-  "game.dtb.con.body": "答え: @1\n平均@2msで解答\n@3回解答済み",
+  "game.dtb.con.body": "答え: @1\n平均 @2秒\n@3回解決",
   "game.btd.desc": "2進数を10進数に変換するクイズです。",
   "game.btd.name": "2進数から10進数へ",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "答え: @1\n平均@2msで解答\n@3回解答済み"
+  "game.btd.con.body": "答え: @1\n平均 @2秒\n@3回解決"
 }

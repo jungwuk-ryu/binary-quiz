@@ -32,9 +32,9 @@
   "game.dtb.desc": "This quiz converts decimal numbers to binary.",
   "game.dtb.name": "Decimal To Binary",
   "game.dtb.con.title": "@1",
-  "game.dtb.con.body": "Answer: @1\nAverage time: @2ms\nSolved @3 times",
+  "game.dtb.con.body": "Answer: @1\nAvg. time: @2 seconds\nSolved @3 times",
   "game.btd.desc": "This quiz converts binary numbers to decimal.",
   "game.btd.name": "Binary To Decimal",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "Answer: @1\nAverage time: @2ms\nSolved @3 times"
+  "game.btd.con.body": "Answer: @1\nAvg. time: @2 seconds\nSolved @3 times"
 }

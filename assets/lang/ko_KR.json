@@ -32,9 +32,9 @@
   "game.dtb.desc": "십진수를 이진수로 변환하는 퀴즈입니다.",
   "game.dtb.name": "Decimal To Binary",
   "game.dtb.con.title": "@1",
-  "game.dtb.con.body": "답: @1\n평균 @2ms 소요\n@3번 풀었음",
+  "game.dtb.con.body": "답: @1\n평균 @2초 소요\n@3번 풀었음",
   "game.btd.desc": "이진수를 십진수로 변환하는 퀴즈입니다.",
   "game.btd.name": "Binary To Decimal",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "답: @1\n평균 @2ms 소요\n@3번 풀었음"
+  "game.btd.con.body": "답: @1\n평균 @2초 소요\n@3번 풀었음"
 }

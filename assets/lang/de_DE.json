@@ -32,9 +32,9 @@
   "game.dtb.desc": "Dieses Quiz konvertiert Dezimalzahlen in Binärzahlen.",
   "game.dtb.name": "Dezimal zu Binär",
   "game.dtb.con.title": "@1",
-  "game.dtb.con.body": "Antwort: @1\nDurchschnittszeit: @2ms\n@3-mal gelöst",
+  "game.dtb.con.body": "Antwort: @1\nØ @2 Sekunden\n@3 Mal gelöst",
   "game.btd.desc": "Dieses Quiz konvertiert Binärzahlen in Dezimalzahlen.",
   "game.btd.name": "Binär zu Dezimal",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "Antwort: @1\nDurchschnittszeit: @2ms\n@3-mal gelöst"
+  "game.btd.con.body": "Antwort: @1\nØ @2 Sekunden\n@3 Mal gelöst"
 }

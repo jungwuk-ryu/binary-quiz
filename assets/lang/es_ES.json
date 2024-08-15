@@ -32,9 +32,9 @@
   "game.dtb.desc": "Este cuestionario convierte números decimales a binarios.",
   "game.dtb.name": "Decimal a Binario",
   "game.dtb.con.title": "@1",
-  "game.dtb.con.body": "Respuesta: @1\nTiempo promedio: @2ms\nResuelto @3 veces",
+  "game.dtb.con.body": "Respuesta: @1\nTiempo promedio: @2 segundos\nResuelto @3 veces",
   "game.btd.desc": "Este cuestionario convierte números binarios a decimales.",
   "game.btd.name": "Binario a Decimal",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "Respuesta: @1\nTiempo promedio: @2ms\nResuelto @3 veces"
+  "game.btd.con.body": "Respuesta: @1\nTiempo promedio: @2 segundos\nResuelto @3 veces"
 }
