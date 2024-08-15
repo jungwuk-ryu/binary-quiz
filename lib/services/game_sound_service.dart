@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:soundpool/soundpool.dart';
@@ -42,7 +43,12 @@ class GameSoundService extends GetxService {
   }
 
   Future<int> _playSound(int soundId) async {
-    if (_streamId != null && _streamId! > 0) await _pool.stop(_streamId!);
+    try {
+      if (_streamId != null && _streamId! > 0) await _pool.stop(_streamId!);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+
     int id = await _pool.play(soundId);
     _streamId = id;
 
