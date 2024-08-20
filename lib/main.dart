@@ -17,7 +17,10 @@ import 'translations/app_translations.dart';
 import 'ui/themes/app_colors.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async {
+    await _trackingTransparencyRequest();
+    _showInterstitialAd();
+  });
   MobileAds.instance.initialize();
 
   await Future.wait([
@@ -36,15 +39,51 @@ void main() async {
     return true;
   };
 
-  // 추적 허용 다이얼로그
-  if (await AppTrackingTransparency.trackingAuthorizationStatus ==
-      TrackingStatus.notDetermined) {
-    await AppTrackingTransparency.requestTrackingAuthorization();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+        designSize: const Size(390, 844),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(colorSchemeSeed: AppColors.primary),
+            initialRoute: AppPages.INITIAL,
+            getPages: AppPages.routes,
+            translations: AppTranslations(),
+            fallbackLocale: const Locale('en', 'US'),
+            locale: Get.deviceLocale,
+          );
+        });
+  }
+}
+
+// From https://github.com/deniza/app_tracking_transparency/issues/47#issuecomment-1751719988
+Future<String?> _trackingTransparencyRequest() async {
+  await Future.delayed(const Duration(milliseconds: 2000));
+  if (Platform.isIOS &&
+      int.parse(Platform.operatingSystemVersion.split(' ')[1].split('.')[0]) >=
+          14) {
+    final TrackingStatus status =
+    await AppTrackingTransparency.trackingAuthorizationStatus;
+    if (status == TrackingStatus.authorized) {
+      final uuid = await AppTrackingTransparency.getAdvertisingIdentifier();
+      return uuid;
+    } else if (status == TrackingStatus.notDetermined) {
+      await AppTrackingTransparency.requestTrackingAuthorization();
+      final uuid = await AppTrackingTransparency.getAdvertisingIdentifier();
+      return uuid;
+    }
   }
 
-  _showInterstitialAd();
-
-  runApp(const MyApp());
+  return null;
 }
 
 Future<void> _showInterstitialAd() async {
@@ -77,27 +116,4 @@ Future<void> _showInterstitialAd() async {
           debugPrint('InterstitialAd failed to load: $error');
         },
       ));
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-        designSize: const Size(390, 844),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (_, child) {
-          return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(colorSchemeSeed: AppColors.primary),
-            initialRoute: AppPages.INITIAL,
-            getPages: AppPages.routes,
-            translations: AppTranslations(),
-            fallbackLocale: const Locale('en', 'US'),
-            locale: Get.deviceLocale,
-          );
-        });
-  }
 }
