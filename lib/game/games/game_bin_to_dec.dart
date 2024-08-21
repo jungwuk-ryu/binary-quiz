@@ -14,6 +14,15 @@ import '../settings/game_sound_setting.dart';
 import '../settings/max_rounds_setting.dart';
 import '../settings/max_value_int_setting.dart';
 
+String _formatBinary(String v, int max) {
+  String maxQuestion = BinTool.int2bin(max);
+
+  int maLen = maxQuestion.length;
+
+  String ret = v.padLeft(maLen, '0');
+  return ret;
+}
+
 class GameBinToDec extends Game<String, int> {
   final List<GameSetting> _availSettings = [];
 
@@ -34,7 +43,7 @@ class GameBinToDec extends Game<String, int> {
     String question = BinTool.int2bin(answer);
 
     GameRoundBinToDec round =
-        GameRoundBinToDec(roundNo: roundNo, question: question, answer: answer);
+        GameRoundBinToDec(getMaxValue(), roundNo: roundNo, question: question, answer: answer);
     return round;
   }
 
@@ -48,7 +57,7 @@ class GameBinToDec extends Game<String, int> {
 
       if (container == null) {
         container = GameRoundContainerBinToDec(
-            question: round.getQuestion(),
+            question: _formatBinary(round.getQuestion(), getMaxValue()),
             answer: round.getAnswer(),
             totalTimeInMS: round.getEstimatedTime().inMilliseconds,
             tryCount: 1);
@@ -68,7 +77,11 @@ class GameBinToDec extends Game<String, int> {
   }
 
   int _generateAnswer() {
-    return Random().nextInt(getSetting(MaxValueIntSetting)!.getValue() + 1);
+    return Random().nextInt(getMaxValue() + 1);
+  }
+
+  int getMaxValue() {
+   return getSetting(MaxValueIntSetting)!.getValue();
   }
 
   @override
@@ -99,7 +112,9 @@ class GameBinToDec extends Game<String, int> {
 }
 
 class GameRoundBinToDec extends GameRound<String, int> {
-  GameRoundBinToDec(
+  final int max;
+
+  GameRoundBinToDec(this.max,
       {required super.roundNo, required super.question, required super.answer});
 
   @override
@@ -108,6 +123,11 @@ class GameRoundBinToDec extends GameRound<String, int> {
 
     int? num = int.tryParse(value);
     return num == getAnswer();
+  }
+
+  @override
+  String getQuestion() {
+    return _formatBinary(super.getQuestion(), max);
   }
 }
 
