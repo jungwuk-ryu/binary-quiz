@@ -49,7 +49,7 @@ class GameDecToBin extends Game<int, String> {
       if (container == null) {
         container = GameRoundContainerDecToBin(
             question: round.getQuestion(),
-            answer: round.getAnswer(),
+            answer: formatAnswer(round.answer),
             totalTimeInMS: round.getEstimatedTime().inMilliseconds,
             tryCount: 1);
       } else {
@@ -68,7 +68,21 @@ class GameDecToBin extends Game<int, String> {
   }
 
   int _generateQuestion() {
-    return Random().nextInt(getSetting(MaxValueIntSetting)!.getValue() + 1);
+    return Random().nextInt(getMaxValue() + 1);
+  }
+
+  int getMaxValue() {
+    return getSetting(MaxValueIntSetting)!.getValue();
+  }
+
+  String formatAnswer(String v) {
+    int maxQuestion = getMaxValue();
+    String maxAnswer = BinTool.int2bin(maxQuestion);
+
+    int maLen = maxAnswer.length;
+
+    String ret = v.padLeft(maLen, '0');
+    return ret;
   }
 
   @override
