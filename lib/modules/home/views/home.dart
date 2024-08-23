@@ -25,9 +25,12 @@ class Home extends GetView<HomeController> {
             children: [
               TitleText('general.app_title'.tr),
               SizedBox(height: 12.h),
-              BorderContainer(
-                  title: 'module.home.app_desc.title'.tr,
-                  body: 'module.home.app_desc.content'.tr),
+              GestureDetector(
+                onTap: () => showLicensePage(context: context),
+                child: BorderContainer(
+                    title: 'module.home.app_desc.title'.tr,
+                    body: 'module.home.app_desc.content'.tr),
+              ),
               SizedBox(height: 20.h),
               BorderContainer(
                   title: 'module.home.quiz_desc.title'.tr,
