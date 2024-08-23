@@ -9,9 +9,10 @@ import '../themes/app_colors.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final Function? onClick;
+  final Color color;
   final RxBool _isLoading = RxBool(false);
 
-  CustomButton({super.key, this.text = "", this.onClick});
+  CustomButton({super.key, this.text = "", this.onClick, this.color = AppColors.primary});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class CustomButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 9.5.h, horizontal: 9.5.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
-          color: AppColors.primary,
+          color: color,
         ),
         child: Center(
           child: Obx(() {

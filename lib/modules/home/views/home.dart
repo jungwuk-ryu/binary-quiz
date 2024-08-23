@@ -35,8 +35,13 @@ class Home extends GetView<HomeController> {
                   backgroundColor: AppColors.grey),
               Expanded(child: _GameListView(controller.getAvailableGames())),
               SizedBox(height: 12.h),
-              CustomButton(
-                  text: 'general.selected'.tr, onClick: _onButtonClick),
+            Obx(() => CustomButton(
+                  // 선택 완료 버튼
+                  text: 'general.selected'.tr,
+                  color: controller.getSelectedGame() == null
+                      ? AppColors.grey
+                      : AppColors.primary,
+                  onClick: _onButtonClick)),
               SizedBox(height: 12.h),
             ],
           ),
