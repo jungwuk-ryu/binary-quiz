@@ -15,7 +15,7 @@
   "module.lobby.start_quiz": "Start",
   "module.in_game.title": "Quiz",
   "module.in_game.enter_answer": "Enter your answer",
-  "module.in_game.entered_answer": "Answer Submitted",
+  "module.in_game.entered_answer": "Submit",
   "module.finish.title": "Results",
   "module.finish.solved_time": "Completed in @1 seconds",
   "module.finish.solved": "You solved @solvedCount questions in total",
