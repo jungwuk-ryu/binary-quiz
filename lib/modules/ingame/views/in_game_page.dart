@@ -59,7 +59,7 @@ class InGamePage extends GetView<InGameController> {
                   children: [
                     TextSpan(text: "${controller.getQuestion()}"),
                     TextSpan(
-                        text: "(2) ",
+                        text: " ${controller.game.getQuestionSuffix()}",
                         style: TextStyle(
                             color: AppColors.textBlueGrey,
                             fontWeight: FontWeight.normal,

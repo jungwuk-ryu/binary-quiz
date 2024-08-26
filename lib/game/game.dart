@@ -121,6 +121,8 @@ abstract class Game<Q, A> {
   List<Widget> getSettingWidgets();
 
   String getKey();
+
+  String getQuestionSuffix();
 }
 
 abstract class GameRound<Q, A> {

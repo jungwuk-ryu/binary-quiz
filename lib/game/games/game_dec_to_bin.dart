@@ -115,6 +115,11 @@ class GameDecToBin extends Game<int, String> {
   String getKey() {
     return "DTB";
   }
+
+  @override
+  String getQuestionSuffix() {
+    return "(10)";
+  }
 }
 
 class GameRoundDecToBin extends GameRound<int, String> {
