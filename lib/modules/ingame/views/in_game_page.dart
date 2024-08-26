@@ -47,67 +47,61 @@ class InGamePage extends GetView<InGameController> {
         SizedBox(height: 20.h),
         _getProgressBar(),
         SizedBox(height: 20.h),
-        Row(
-          children: [
-            Obx(
-              () => Center(
-                child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22.spMin,
-                          color: AppColors.text),
-                      children: [
-                        TextSpan(text: "${controller.getQuestion()}"),
-                        TextSpan(
-                            text: "(2) ",
-                            style: TextStyle(
-                                color: AppColors.textBlueGrey,
-                                fontWeight: FontWeight.normal,
-                                fontSize: 13.spMin)),
-                        const TextSpan(text: "= ")
-                      ],
-                    )),
-              ),
+        Center(
+          child: Obx(
+            () => RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22.spMin,
+                      color: AppColors.text),
+                  children: [
+                    TextSpan(text: "${controller.getQuestion()}"),
+                    TextSpan(
+                        text: "(2) ",
+                        style: TextStyle(
+                            color: AppColors.textBlueGrey,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 13.spMin)),
+                    //const TextSpan(text: "= ")
+                  ],
+                )),
+          ),
+        ),
+        SizedBox(height: 10.h),
+        SizedBox(
+          height: 50.h,
+          child: Obx(() => AnimatedContainer(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.bounceInOut,
+            decoration: BoxDecoration(
+              color: _textFieldColor.value,
+              borderRadius: BorderRadius.circular(12.r),
             ),
-            SizedBox(width: 10.h),
-            Expanded(
-                child: SizedBox(
-              height: 50.h,
-              child: Obx(() => AnimatedContainer(
-                    margin: EdgeInsets.symmetric(horizontal: 10.w),
-                    padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.bounceInOut,
-                    decoration: BoxDecoration(
-                      color: _textFieldColor.value,
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                    child: Center(
-                      child: TextField(
-                          controller: controller.teController,
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.zero,
-                              hintText: "module.in_game.enter_answer".tr),
-                          style: TextStyle(
-                              fontSize: 20.spMin, fontWeight: FontWeight.bold),
-                          autofocus: !(Platform.isAndroid || Platform.isIOS),
-                          onTapOutside: (event) =>
-                              FocusScope.of(Get.context!).unfocus(),
-                          keyboardType: const TextInputType.numberWithOptions(
-                              decimal: true, signed: true),
-                          onEditingComplete: () {},
-                          onSubmitted: (value) => checkAnswer(),
-                          inputFormatters: [
-                            if (controller.game.textInputFormatter != null)
-                              controller.game.textInputFormatter!,
-                          ]),
-                    ),
-                  )),
-            ))
-          ],
+            child: Center(
+              child: TextField(
+                  controller: controller.teController,
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.zero,
+                      hintText: "module.in_game.enter_answer".tr),
+                  style: TextStyle(
+                      fontSize: 20.spMin, fontWeight: FontWeight.bold),
+                  autofocus: !(Platform.isAndroid || Platform.isIOS),
+                  onTapOutside: (event) =>
+                      FocusScope.of(Get.context!).unfocus(),
+                  keyboardType: const TextInputType.numberWithOptions(
+                      decimal: true, signed: true),
+                  onEditingComplete: () {},
+                  onSubmitted: (value) => checkAnswer(),
+                  inputFormatters: [
+                    if (controller.game.textInputFormatter != null)
+                      controller.game.textInputFormatter!,
+                  ]),
+            ),
+          )),
         ),
         const Expanded(child: SizedBox()),
         SizedBox(
