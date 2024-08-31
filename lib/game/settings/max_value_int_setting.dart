@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../tools/my_tool.dart';
 import '../../ui/widgets/border_container.dart';
 import '../game_setting.dart';
 
@@ -56,6 +57,19 @@ class MaxValueIntSetting extends GameSetting<int> {
 
     setValue(intData);
     controller.text = "$intData";
+  }
+
+  @override
+  bool validateValue() {
+    int maxRounds = getValue();
+    if (maxRounds < 1) { // 잘못된 값
+      MyTool.snackbar(
+          title: 'module.lobby.invalid_setting.max_rounds.title'.tr,
+          body: 'module.lobby.invalid_setting.max_rounds.content'.tr);
+      return false;
+    }
+
+    return true;
   }
 }
 

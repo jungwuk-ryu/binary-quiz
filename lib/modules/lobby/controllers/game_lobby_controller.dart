@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../game/game.dart';
 import '../../../game/game_setting.dart';
-import '../../../game/settings/max_rounds_setting.dart';
 import '../../../routes/app_pages.dart';
-import '../../../tools/my_tool.dart';
 import '../../home/controllers/home_controller.dart';
 
 class GameLobbyController extends GetxController {
@@ -17,14 +15,12 @@ class GameLobbyController extends GetxController {
     Game game = getGame();
 
     /**
-     * MaxRounds 유효성 체크
+     * 각 설정 유효성 검사
+     * false를 반환한 setting이 하나라도 존재할 경우
+     * 게임을 시작하지 않습니다.
      */
-    int? maxRounds = game.getSetting(MaxRoundsSetting)?.getValue();
-    if (maxRounds == null || maxRounds < 1) { // 잘못된 값
-      MyTool.snackbar(
-          title: 'module.lobby.invalid_setting.max_rounds.title'.tr,
-          body: 'module.lobby.invalid_setting.max_rounds.content'.tr);
-      return;
+    for (GameSetting setting in game.getAvailableSettings()) {
+      if (!setting.validateValue()) return;
     }
 
     /**

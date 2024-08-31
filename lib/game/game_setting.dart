@@ -38,4 +38,8 @@ abstract class GameSetting<V> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(getStorageKey(), "${getValue()}");
   }
+
+  bool validateValue() {
+    return true;
+  }
 }
