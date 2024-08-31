@@ -7,12 +7,18 @@ import '../../../game/game.dart';
 import '../../../ui/widgets/border_container.dart';
 import '../../../ui/widgets/custom_button.dart';
 import '../../../ui/widgets/title_text.dart';
+import '../models/finish_page_arguments.dart';
 
 class FinishPage extends StatelessWidget {
-  final Game game;
-  final List<GameRoundContainer> containers;
+  late Game game;
+  late List<GameRoundContainer> containers;
 
-  const FinishPage({super.key, required this.game, required this.containers});
+  FinishPage({super.key}) {
+    FinishPageArguments args = Get.arguments;
+
+    game = args.game;
+    containers = args.containers;
+  }
 
   @override
   Widget build(BuildContext context) {

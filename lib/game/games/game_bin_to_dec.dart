@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../modules/finish/models/finish_page_arguments.dart';
 import '../../modules/finish/views/game_finish_page.dart';
+import '../../routes/app_pages.dart';
 import '../../tools/bin_tool.dart';
 import '../../ui/widgets/border_container.dart';
 import '../game.dart';
@@ -70,10 +72,11 @@ class GameBinToDec extends Game<String, int> {
     }
 
     List<GameRoundContainerBinToDec> values = List.from(containers.values);
-    Get.off(() => FinishPage(
+    Get.offAndToNamed(Routes.finish,
+        arguments: FinishPageArguments(
           game: this,
           containers: List.generate(values.length, (index) => values[index]),
-        ));
+    ));
   }
 
   int _generateAnswer() {

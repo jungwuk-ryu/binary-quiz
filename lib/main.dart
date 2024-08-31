@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -24,15 +25,20 @@ void main() async {
     await adManager.trackingTransparencyRequest();
     adManager.showInterstitialAd();
   });
-  MobileAds.instance.initialize();
 
+  /**
+   * 플러그인 초기화
+   */
   await Future.wait([
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     SharedPreferences.getInstance(),
-    AppTranslations.load()
+    AppTranslations.load(),
+    MobileAds.instance.initialize()
   ]);
 
-  // Firebase Crashlytics - 비정상 종료 핸들러 구성
+  /**
+   * Firebase Crashlytics - 비정상 종료 핸들러 구성
+   */
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   };
@@ -48,6 +54,9 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -58,7 +67,8 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(colorSchemeSeed: AppColors.primary),
-            initialRoute: AppPages.INITIAL,
+            navigatorObservers: [observer],
+            initialRoute: AppPages.initial,
             getPages: AppPages.routes,
             translations: AppTranslations(),
             fallbackLocale: const Locale('en', 'US'),

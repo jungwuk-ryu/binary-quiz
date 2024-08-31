@@ -40,8 +40,9 @@ dependencies:
   soundpool: ^2.4.1
   smooth_scroll_multiplatform: ^1.0.8
   shared_preferences: ^2.2.3
-  firebase_core: ^3.3.0
-  firebase_crashlytics: ^4.0.4
+  firebase_core: ^3.4.0
+  firebase_crashlytics: ^4.1.0
+  firebase_analytics: ^11.3.0
   google_mobile_ads: ^5.1.0
   app_tracking_transparency: ^2.0.6
   flutter_launcher_icons: ^0.13.1

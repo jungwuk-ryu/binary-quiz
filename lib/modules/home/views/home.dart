@@ -59,7 +59,7 @@ class Home extends GetView<HomeController> {
       return;
     }
 
-    Get.toNamed(Routes.LOBBY);
+    Get.toNamed(Routes.lobby);
   }
 }
 
@@ -86,7 +86,7 @@ class _SelectableBorderContainer extends GetView<HomeController> {
       if (p0 == false) {
         controller.unselectGameByGame(game);
       } else {
-        controller.selectedGame(game);
+        controller.setSelectedGame(game);
       }
     });
 
