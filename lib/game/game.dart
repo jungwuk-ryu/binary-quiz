@@ -123,6 +123,8 @@ abstract class Game<Q, A> {
   String getKey();
 
   String getQuestionSuffix();
+
+  int getAvailableQuestionCount();
 }
 
 abstract class GameRound<Q, A> {

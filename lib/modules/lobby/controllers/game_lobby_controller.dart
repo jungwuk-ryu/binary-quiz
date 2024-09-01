@@ -20,7 +20,7 @@ class GameLobbyController extends GetxController {
      * 게임을 시작하지 않습니다.
      */
     for (GameSetting setting in game.getAvailableSettings()) {
-      if (!setting.validateValue()) return;
+      if (!setting.validateValueBeforeStart()) return;
     }
 
     /**

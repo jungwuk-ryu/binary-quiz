@@ -1,8 +1,12 @@
+import 'dart:math';
+
+import 'package:binary_quiz/game/settings/unique_mode_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../tools/my_tool.dart';
 import '../../ui/widgets/border_container.dart';
 import '../game_setting.dart';
 
@@ -56,6 +60,26 @@ class MaxRoundsSetting extends GameSetting<int> {
 
     setValue(intData);
     controller.text = "$intData";
+  }
+
+  @override
+  bool validateValueBeforeStart() {
+    UniqueModeSetting? us = game.getSetting(UniqueModeSetting) as UniqueModeSetting?;
+    this.maxRounds.value = int.tryParse(controller.text) ?? 1;
+
+    if (us != null && us.getValue()) {
+      this.maxRounds.value = min(game.getAvailableQuestionCount(), this.maxRounds.value);
+    }
+
+    int maxRounds = getValue();
+    if (maxRounds < 1) { // 잘못된 값
+      MyTool.snackbar(
+          title: 'module.lobby.invalid_setting.max_rounds.title'.tr,
+          body: 'module.lobby.invalid_setting.max_rounds.content'.tr);
+      return false;
+    }
+
+    return true;
   }
 }
 

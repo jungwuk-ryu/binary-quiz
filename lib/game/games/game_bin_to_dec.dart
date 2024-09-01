@@ -15,6 +15,7 @@ import '../settings/auto_submit_setting.dart';
 import '../settings/game_sound_setting.dart';
 import '../settings/max_rounds_setting.dart';
 import '../settings/max_value_int_setting.dart';
+import '../settings/unique_mode_setting.dart';
 
 String _formatBinary(String v, int max) {
   String maxQuestion = BinTool.int2bin(max);
@@ -26,18 +27,20 @@ String _formatBinary(String v, int max) {
 }
 
 class GameBinToDec extends Game<String, int> {
-  final List<GameSetting> _availSettings = [];
-
   GameBinToDec() {
     textInputFormatter =
         FilteringTextInputFormatter.allow(RegExp(r'^[+-]?\d*\.?\d*'));
     _availSettings.addAll([
       MaxRoundsSetting(this),
       MaxValueIntSetting(this),
+      UniqueModeSetting(this),
+      AutoSubmitSetting(this),
       GameSoundSetting(this),
-      AutoSubmitSetting(this)
     ]);
   }
+
+  final List<GameSetting> _availSettings = [];
+  final Random random = Random();
 
   @override
   GameRound getNewRound(int roundNo) {
@@ -80,7 +83,22 @@ class GameBinToDec extends Game<String, int> {
   }
 
   int _generateAnswer() {
-    return Random().nextInt(getMaxValue() + 1);
+    UniqueModeSetting? us = getSetting(UniqueModeSetting) as UniqueModeSetting?;
+    int value = random.nextInt(getMaxValue() + 1);
+    if (us == null || !us.getValue()) { // 설정이 존재하지 않거나 비활성화된 경우
+      return value;
+    }
+
+    int tryCount = 0;
+    while (!us.add(value)) {
+      value = random.nextInt(getMaxValue() + 1);
+
+      if (++tryCount > 1000000) {
+        endGame();
+        break;
+      }
+    }
+    return value;
   }
 
   int getMaxValue() {
@@ -116,6 +134,11 @@ class GameBinToDec extends Game<String, int> {
   @override
   String getQuestionSuffix() {
     return "(2)";
+  }
+
+  @override
+  int getAvailableQuestionCount() {
+    return getMaxValue() + 1;
   }
 }
 

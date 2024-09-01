@@ -60,7 +60,7 @@ class MaxValueIntSetting extends GameSetting<int> {
   }
 
   @override
-  bool validateValue() {
+  bool validateValueBeforeStart() {
     int maxRounds = getValue();
     if (maxRounds < 1) { // 잘못된 값
       MyTool.snackbar(

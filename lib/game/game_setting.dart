@@ -39,7 +39,7 @@ abstract class GameSetting<V> {
     await prefs.setString(getStorageKey(), "${getValue()}");
   }
 
-  bool validateValue() {
+  bool validateValueBeforeStart() {
     return true;
   }
 }

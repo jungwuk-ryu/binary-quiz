@@ -15,6 +15,7 @@ import '../settings/auto_submit_setting.dart';
 import '../settings/game_sound_setting.dart';
 import '../settings/max_rounds_setting.dart';
 import '../settings/max_value_int_setting.dart';
+import '../settings/unique_mode_setting.dart';
 
 class GameDecToBin extends Game<int, String> {
   final List<GameSetting> _availSettings = [];
@@ -25,8 +26,9 @@ class GameDecToBin extends Game<int, String> {
     _availSettings.addAll([
       MaxRoundsSetting(this),
       MaxValueIntSetting(this),
+      UniqueModeSetting(this),
+      AutoSubmitSetting(this),
       GameSoundSetting(this),
-      AutoSubmitSetting(this)
     ]);
   }
 
@@ -121,6 +123,11 @@ class GameDecToBin extends Game<int, String> {
   @override
   String getQuestionSuffix() {
     return "(10)";
+  }
+
+  @override
+  int getAvailableQuestionCount() {
+    return getMaxValue() + 1;
   }
 }
 
