@@ -36,5 +36,7 @@
   "game.btd.desc": "This quiz converts binary numbers to decimal.",
   "game.btd.name": "Binary To Decimal",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "Answer: @1\nAvg. time: @2 seconds\nSolved @3 times"
+  "game.btd.con.body": "Answer: @1\nAvg. time: @2 seconds\nSolved @3 times",
+  "game.settings.unique_mode.widget.title": "No Duplicates",
+  "game.settings.unique_mode.widget.body": "The same problem is presented only once."
 }

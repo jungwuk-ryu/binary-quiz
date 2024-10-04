@@ -36,5 +36,7 @@
   "game.btd.desc": "Эта викторина преобразует двоичные числа в десятичные.",
   "game.btd.name": "Двоичное в Десятичное",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "Ответ: @1\nСреднее время: @2 секунд\nРешено @3 раз"
+  "game.btd.con.body": "Ответ: @1\nСреднее время: @2 секунд\nРешено @3 раз",
+  "game.settings.unique_mode.widget.title": "Без дубликатов",
+  "game.settings.unique_mode.widget.body": "Одна и та же задача представляется только один раз."
 }

@@ -76,8 +76,8 @@ class _UniqueModeSettingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BorderContainer(
-        title: "중복 방지",
-        body: "동일한 문제가 한 번만 출제됩니다.",
+        title: "game.settings.unique_mode.widget.title".tr,
+        body: "game.settings.unique_mode.widget.body".tr,
         checkBox: rxBool);
   }
 }

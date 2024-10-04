@@ -36,5 +36,7 @@
   "game.btd.desc": "Dieses Quiz konvertiert Binärzahlen in Dezimalzahlen.",
   "game.btd.name": "Binär zu Dezimal",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "Antwort: @1\nØ @2 Sekunden\n@3 Mal gelöst"
+  "game.btd.con.body": "Antwort: @1\nØ @2 Sekunden\n@3 Mal gelöst",
+  "game.settings.unique_mode.widget.title": "Keine Duplikate",
+  "game.settings.unique_mode.widget.body": "Das gleiche Problem wird nur einmal präsentiert."
 }

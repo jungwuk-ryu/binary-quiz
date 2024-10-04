@@ -36,5 +36,7 @@
   "game.btd.desc": "यह एक क्विज़ है जिसमें बाइनरी को दशमलव में परिवर्तित करना होता है।",
   "game.btd.name": "बाइनरी से दशमलव",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "उत्तर: @1\nऔसत समय: @2 सेकंड\n@3 बार हल किया"
+  "game.btd.con.body": "उत्तर: @1\nऔसत समय: @2 सेकंड\n@3 बार हल किया",
+  "game.settings.unique_mode.widget.title": "कोई पुनरावृत्ति नहीं",
+  "game.settings.unique_mode.widget.body": "समान समस्या केवल एक बार प्रस्तुत की जाती है।"
 }

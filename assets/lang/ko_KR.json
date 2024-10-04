@@ -36,5 +36,7 @@
   "game.btd.desc": "이진수를 십진수로 변환하는 퀴즈입니다.",
   "game.btd.name": "Binary To Decimal",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "답: @1\n평균 @2초 소요\n@3번 풀었음"
+  "game.btd.con.body": "답: @1\n평균 @2초 소요\n@3번 풀었음",
+  "game.settings.unique_mode.widget.title": "중복 방지",
+  "game.settings.unique_mode.widget.body": "동일한 문제가 한 번만 출제됩니다"
 }

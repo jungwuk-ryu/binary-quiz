@@ -36,5 +36,7 @@
   "game.btd.desc": "Este cuestionario convierte números binarios a decimales.",
   "game.btd.name": "Binario a Decimal",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "Respuesta: @1\nTiempo promedio: @2 segundos\nResuelto @3 veces"
+  "game.btd.con.body": "Respuesta: @1\nTiempo promedio: @2 segundos\nResuelto @3 veces",
+  "game.settings.unique_mode.widget.title": "Sin Duplicados",
+  "game.settings.unique_mode.widget.body": "El mismo problema se presenta solo una vez."
 }

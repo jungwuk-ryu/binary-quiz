@@ -36,5 +36,7 @@
   "game.btd.desc": "2進数を10進数に変換するクイズです。",
   "game.btd.name": "2進数から10進数へ",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "答え: @1\n平均 @2秒\n@3回解決"
+  "game.btd.con.body": "答え: @1\n平均 @2秒\n@3回解決",
+  "game.settings.unique_mode.widget.title": "重複なし",
+  "game.settings.unique_mode.widget.body": "同じ問題は一度だけ出題されます。"
 }

@@ -36,5 +36,7 @@
   "game.btd.desc": "这是一个将二进制转换为十进制的测验。",
   "game.btd.name": "二进制转十进制",
   "game.btd.con.title": "@1",
-  "game.btd.con.body": "答案：@1\n平均用时：@2秒\n已解决 @3 次"
+  "game.btd.con.body": "答案：@1\n平均用时：@2秒\n已解决 @3 次",
+  "game.settings.unique_mode.widget.title": "无重复",
+  "game.settings.unique_mode.widget.body": "相同的问题只出现一次。"
 }
