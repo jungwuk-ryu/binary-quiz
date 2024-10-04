@@ -1,6 +1,6 @@
 # Binary Quiz
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
-[![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=app-store&logoColor=white)](https://test)  
+[![App Store](https://img.shields.io/badge/App_Store-0D96F6?style=for-the-badge&logo=app-store&logoColor=white)](https://apps.apple.com/kr/app/binary-quiz/id6636496411)  
 
 <img src="./img/app_main_screen.png" width="50%" height="50%" alt="앱 화면"/>
 
