@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io' show Platform;
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -89,7 +90,7 @@ class InGamePage extends GetView<InGameController> {
                       hintText: "module.in_game.enter_answer".tr),
                   style: TextStyle(
                       fontSize: 20.spMin, fontWeight: FontWeight.bold),
-                  autofocus: !(Platform.isAndroid || Platform.isIOS),
+                  autofocus: kIsWeb || !(Platform.isAndroid || Platform.isIOS),
                   onTapOutside: (event) =>
                       FocusScope.of(Get.context!).unfocus(),
                   keyboardType: const TextInputType.numberWithOptions(

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -11,9 +12,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'ads/ad_manager.dart';
-import 'secrets/my_ad_manager.dart';
 import 'firebase_options.dart';
 import 'routes/app_pages.dart';
+import 'secrets/my_ad_manager.dart';
 import 'translations/app_translations.dart';
 import 'ui/themes/app_colors.dart';
 
@@ -22,19 +23,25 @@ void main() async {
   ADManager.instance = adManager; // 작성하신 ADManager 클래스로 수정하십시오.
 
   WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async {
-    await adManager.trackingTransparencyRequest();
-    adManager.showInterstitialAd();
+    if (!kIsWeb) {
+      if (Platform.isIOS) {
+        await adManager.trackingTransparencyRequest();
+      }
+      adManager.showInterstitialAd();
+    }
   });
 
   /**
    * 플러그인 초기화
    */
-  await Future.wait([
+  List<Future> futures = [
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     SharedPreferences.getInstance(),
     AppTranslations.load(),
-    MobileAds.instance.initialize()
-  ]);
+  ];
+
+  if (!kIsWeb) futures.add(MobileAds.instance.initialize());
+  await Future.wait(futures);
 
   /**
    * Firebase Crashlytics - 비정상 종료 핸들러 구성
