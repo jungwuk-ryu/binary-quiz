@@ -111,7 +111,10 @@ class _ButtonState extends State<_Button> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (details) => _updatePadding(3),
-      onTapUp: (details) => _updatePadding(0),
+      onTapUp: (details) => Future.delayed(
+        const Duration(milliseconds: 50),
+        () => _updatePadding(0),
+      ),
       onTapCancel: () => _setPadding(0),
       onTap: () => widget.onPressed(widget.character),
       onLongPressStart: (d) => _startTimer(),
@@ -119,7 +122,7 @@ class _ButtonState extends State<_Button> {
       onLongPressEnd: (d) => _cancelTimer(),
       child: AnimatedContainer(
         padding: EdgeInsets.all(_padding.r),
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 50),
         curve: Curves.bounceInOut,
         child: Container(
           width: double.infinity,
