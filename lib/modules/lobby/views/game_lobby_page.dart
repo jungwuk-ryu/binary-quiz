@@ -16,50 +16,55 @@ class GameLobbyPage extends GetView<GameLobbyController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  TitleText("general.app_title".tr),
-                  const Expanded(child: SizedBox()),
-                  const ExitButton(),
+                  Row(
+                    children: [
+                      TitleText("general.app_title".tr),
+                      const Expanded(child: SizedBox()),
+                      const ExitButton(),
+                    ],
+                  ),
+                  SizedBox(height: 12.h),
+                  Expanded(
+                      child: CustomScrollView(
+                    slivers: [
+                      SliverList(
+                          delegate: SliverChildListDelegate([
+                        BorderContainer(
+                            title: "📖 ${controller.getGame().getName()}",
+                            body: controller.getGame().getDescription()),
+                        SizedBox(height: 20.h)
+                      ])),
+                      SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Column(
+                          children: [
+                            const Expanded(child: SizedBox()),
+                            BorderContainer(
+                                title: 'module.lobby.setting_desc.title'.tr,
+                                body: 'module.lobby.setting_desc.content'.tr,
+                                backgroundColor: AppColors.grey),
+                            ...controller.getGame().getSettingWidgets()
+                          ],
+                        ),
+                      ),
+                    ],
+                  )),
+                  SizedBox(height: 12.h),
+                  CustomButton(
+                      text: 'module.lobby.start_quiz'.tr,
+                      onClick: controller.startGame),
+                  SizedBox(height: 12.h),
                 ],
               ),
-              SizedBox(height: 12.h),
-              Expanded(
-                  child: CustomScrollView(
-                slivers: [
-                  SliverList(
-                      delegate: SliverChildListDelegate([
-                    BorderContainer(
-                        title: "📖 ${controller.getGame().getName()}",
-                        body: controller.getGame().getDescription()),
-                    SizedBox(height: 20.h)
-                  ])),
-                  SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Column(
-                      children: [
-                        const Expanded(child: SizedBox()),
-                        BorderContainer(
-                            title: 'module.lobby.setting_desc.title'.tr,
-                            body: 'module.lobby.setting_desc.content'.tr,
-                            backgroundColor: AppColors.grey),
-                        ...controller.getGame().getSettingWidgets()
-                      ],
-                    ),
-                  ),
-                ],
-              )),
-              SizedBox(height: 12.h),
-              CustomButton(
-                  text: 'module.lobby.start_quiz'.tr,
-                  onClick: controller.startGame),
-              SizedBox(height: 12.h),
-            ],
+            ),
           ),
         ),
       ),

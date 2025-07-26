@@ -28,9 +28,14 @@ class InGamePage extends GetView<InGameController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
-          child: _getBodyWidget(),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
+              child: _getBodyWidget(),
+            ),
+          ),
         ),
       ),
     );
@@ -74,35 +79,36 @@ class InGamePage extends GetView<InGameController> {
         SizedBox(
           height: 50.h,
           child: Obx(() => AnimatedContainer(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.bounceInOut,
-            decoration: BoxDecoration(
-              color: _textFieldColor.value,
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-            child: Center(
-              child: TextField(
-                  controller: controller.teController,
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.zero,
-                      hintText: "module.in_game.enter_answer".tr),
-                  style: TextStyle(
-                      fontSize: 20.spMin, fontWeight: FontWeight.bold),
-                  autofocus: kIsWeb || !(Platform.isAndroid || Platform.isIOS),
-                  onTapOutside: (event) =>
-                      FocusScope.of(Get.context!).unfocus(),
-                  keyboardType: const TextInputType.numberWithOptions(
-                      decimal: true, signed: true),
-                  onEditingComplete: () {},
-                  onSubmitted: (value) => checkAnswer(),
-                  inputFormatters: [
-                    if (controller.game.textInputFormatter != null)
-                      controller.game.textInputFormatter!,
-                  ]),
-            ),
-          )),
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.bounceInOut,
+                decoration: BoxDecoration(
+                  color: _textFieldColor.value,
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: Center(
+                  child: TextField(
+                      controller: controller.teController,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.zero,
+                          hintText: "module.in_game.enter_answer".tr),
+                      style: TextStyle(
+                          fontSize: 20.spMin, fontWeight: FontWeight.bold),
+                      autofocus:
+                          kIsWeb || !(Platform.isAndroid || Platform.isIOS),
+                      onTapOutside: (event) =>
+                          FocusScope.of(Get.context!).unfocus(),
+                      keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true, signed: true),
+                      onEditingComplete: () {},
+                      onSubmitted: (value) => checkAnswer(),
+                      inputFormatters: [
+                        if (controller.game.textInputFormatter != null)
+                          controller.game.textInputFormatter!,
+                      ]),
+                ),
+              )),
         ),
         const Expanded(child: SizedBox()),
         SizedBox(

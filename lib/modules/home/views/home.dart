@@ -18,35 +18,41 @@ class Home extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TitleText('general.app_title'.tr),
-              SizedBox(height: 12.h),
-              GestureDetector(
-                onTap: () => showLicensePage(context: context),
-                child: BorderContainer(
-                    title: 'module.home.app_desc.title'.tr,
-                    body: 'module.home.app_desc.content'.tr),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TitleText('general.app_title'.tr),
+                  SizedBox(height: 12.h),
+                  GestureDetector(
+                    onTap: () => showLicensePage(context: context),
+                    child: BorderContainer(
+                        title: 'module.home.app_desc.title'.tr,
+                        body: 'module.home.app_desc.content'.tr),
+                  ),
+                  SizedBox(height: 20.h),
+                  BorderContainer(
+                      title: 'module.home.quiz_desc.title'.tr,
+                      body: 'module.home.quiz_desc.body'.tr,
+                      backgroundColor: AppColors.grey),
+                  Expanded(
+                      child: _GameListView(controller.getAvailableGames())),
+                  SizedBox(height: 12.h),
+                  Obx(() => CustomButton(
+                      // 선택 완료 버튼
+                      text: 'general.selected'.tr,
+                      color: controller.getSelectedGame() == null
+                          ? AppColors.grey
+                          : AppColors.primary,
+                      onClick: _onButtonClick)),
+                  SizedBox(height: 12.h),
+                ],
               ),
-              SizedBox(height: 20.h),
-              BorderContainer(
-                  title: 'module.home.quiz_desc.title'.tr,
-                  body: 'module.home.quiz_desc.body'.tr,
-                  backgroundColor: AppColors.grey),
-              Expanded(child: _GameListView(controller.getAvailableGames())),
-              SizedBox(height: 12.h),
-            Obx(() => CustomButton(
-                  // 선택 완료 버튼
-                  text: 'general.selected'.tr,
-                  color: controller.getSelectedGame() == null
-                      ? AppColors.grey
-                      : AppColors.primary,
-                  onClick: _onButtonClick)),
-              SizedBox(height: 12.h),
-            ],
+            ),
           ),
         ),
       ),
