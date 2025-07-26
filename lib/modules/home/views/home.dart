@@ -88,6 +88,8 @@ class _SelectableBorderContainer extends GetView<HomeController> {
   final RxBool isSelected = RxBool(false);
 
   _SelectableBorderContainer(this.game) {
+    isSelected.value = controller.selectedGame.value == game;
+    
     isSelected.listen((p0) {
       if (p0 == false) {
         controller.unselectGameByGame(game);
