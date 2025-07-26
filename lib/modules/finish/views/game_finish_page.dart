@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:smooth_scroll_multiplatform/smooth_scroll_multiplatform.dart';
 
 import '../../../game/game.dart';
+import '../../../ui/themes/app_colors.dart';
 import '../../../ui/widgets/border_container.dart';
 import '../../../ui/widgets/custom_button.dart';
 import '../../../ui/widgets/title_text.dart';
@@ -41,7 +42,8 @@ class FinishPage extends StatelessWidget {
                       body: "module.finish.solved_time".trParams({
                         '1':
                             "${game.getEstimatedTime().inSeconds}.${(game.getEstimatedTime().inMilliseconds % 1000)}"
-                      })),
+                      }),
+                      backgroundColor: AppColors.grey),
                   Expanded(
                       child: DynMouseScroll(
                     builder: (context, controller, physics) => ListView.builder(
