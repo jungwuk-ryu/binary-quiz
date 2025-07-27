@@ -1,57 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:soundpool/soundpool.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 enum GameSound { correct, incorrect }
 
 class GameSoundService extends GetxService {
-  final Soundpool _pool = Soundpool.fromOptions(
-      options: const SoundpoolOptions(streamType: StreamType.notification));
-  int? _streamId;
-  Map<GameSound, int> soundIdMap = {};
+  final Map<GameSound, AudioPlayer> _players = {
+    GameSound.correct: AudioPlayer(),
+    GameSound.incorrect: AudioPlayer(),
+  };
+
+  final Map<GameSound, String> _assetPath = const {
+    GameSound.correct: 'sounds/correct.mp3',
+    GameSound.incorrect: 'sounds/incorrect.mp3',
+  };
 
   @override
   void onInit() {
     super.onInit();
-    _loadSounds();
+    _preload();
+  }
+
+  Future<void> _preload() async {
+    for (final entry in _players.entries) {
+      try {
+        var player = entry.value;
+        await player.setReleaseMode(ReleaseMode.stop);
+        await player.setPlayerMode(PlayerMode.lowLatency);
+        await player.setSourceAsset(_assetPath[entry.key]!);
+      } catch (e) {
+        debugPrint('preload fail: $e');
+      }
+    }
   }
 
   Future<void> playGameSound(GameSound sound) async {
-    int? soundId = _getSoundId(sound);
-    if (soundId == null) return;
+    final player = _players[sound];
+    if (player == null) return;
 
-    await _playSound(soundId);
-  }
-
-  int? _getSoundId(GameSound sound) {
-    return soundIdMap[sound];
-  }
-
-  Future<void> _loadSounds() async {
-    Future<int> icf = _loadSound("assets/sounds/incorrect.mp3");
-    Future<int> cf = _loadSound("assets/sounds/correct.mp3");
-
-    soundIdMap[GameSound.incorrect] = await icf;
-    soundIdMap[GameSound.correct] = await cf;
-  }
-
-  Future<int> _loadSound(String path) {
-    return rootBundle.load(path).then((ByteData soundData) {
-      return _pool.load(soundData);
-    });
-  }
-
-  Future<int> _playSound(int soundId) async {
     try {
-      if (_streamId != null && _streamId! > 0) await _pool.stop(_streamId!);
+      await player.stop();
+      await player.play(AssetSource(_assetPath[sound]!));
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('play error: $e');
     }
+  }
 
-    int id = await _pool.play(soundId);
-    _streamId = id;
-
-    return id;
+  @override
+  void onClose() {
+    for (final p in _players.values) {
+      p.dispose();
+    }
+    super.onClose();
   }
 }
